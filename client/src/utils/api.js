@@ -1,8 +1,12 @@
 import axios from "axios";
 
+const instance = axios.create({
+  baseURL: "http://localhost:3001/",
+  withCredentials: false,
+});
 // Front end route for signup
 export const register = (newUser) => {
-  return axios
+  return instance
     .post("api/users", {
       firstName: newUser.firstName,
       lastName: newUser.lastName,
@@ -16,7 +20,7 @@ export const register = (newUser) => {
 
 // Route for login
 export const login = (user) => {
-  return axios
+  return instance
     .post("api/auth", {
       email: user.email,
       password: user.password,
@@ -39,11 +43,14 @@ export const login = (user) => {
 
 //Routing for geeting name from user profile only to home page
 export const home = (user) => {
-  return axios
+  return instance
     .get("api/auth", {
       headers: {
-        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(/['"]+/g,"")
-      }
+        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
+          /['"]+/g,
+          ""
+        ),
+      },
     })
     .then((response) => {
       // console.log(response);
@@ -54,14 +61,16 @@ export const home = (user) => {
     });
 };
 
-
 // Route for getting main profile
 export const mainProfile = (user) => {
-  return axios
+  return instance
     .get("api/profile/me", {
       headers: {
-        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(/['"]+/g,"")
-      }
+        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
+          /['"]+/g,
+          ""
+        ),
+      },
     })
     .then((response) => {
       // console.log(response);
@@ -83,7 +92,7 @@ export function logout() {
 // Post route for profile from wizard
 export const profile = (newUser) => {
   console.log("from api", newUser);
-  return axios
+  return instance
     .post(
       "api/profile",
       {
@@ -114,8 +123,11 @@ export const profile = (newUser) => {
       },
       {
         headers: {
-          "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(/['"]+/g,"")
-        }
+          "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
+            /['"]+/g,
+            ""
+          ),
+        },
       }
     )
     .then((response) => {
@@ -128,11 +140,11 @@ export const profile = (newUser) => {
 };
 
 export const generatepage = (data) => {
-  return axios
+  return instance
     .post("api/generatepage", {
-      'page': data,
+      page: data,
     })
     .then((response) => {
       console.log("This new page holds - ", response);
-    })
+    });
 };

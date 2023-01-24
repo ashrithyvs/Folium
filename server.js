@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
-
+const cors = require("cors");
 const app = express();
 
 const connectDB = async () => {
@@ -15,7 +15,7 @@ const connectDB = async () => {
 };
 
 connectDB();
-
+app.use(cors());
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
