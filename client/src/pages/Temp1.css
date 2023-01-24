@@ -1,0 +1,17 @@
+#tempBorder {
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border: 2px solid;
+    align-content: center;
+    border-radius: 25px;
+}
+#tempBtn{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+#tempBtn2{
+    text-align: center;
+    margin-bottom: 3rem;
+}
