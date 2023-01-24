@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: proxima-nova;
+  src: local("proxima-nova"), url("./fonts/proxima-nova.otf") format("truetype");
+  font-weight: normal;
+}
+
+* {
+  background-color: rgb(17 24 39);
+  font-family: proxima-nova;
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0px;
+}

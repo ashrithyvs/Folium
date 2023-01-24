@@ -1,46 +1,35 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 import { logout } from "../utils/api";
 
-export default () => {
+export default function Navbar() {
   const userInfo = window.localStorage.user;
   return (
-    <Navbar
-      className="text-yellow-100"
-      collapseOnSelect
-      expand="lg"
-      id="navDiv"
-    >
-      <Navbar.Brand href="/home">Portfolio-Builder</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto"></Nav>
-        <Nav>
-          {userInfo ? (
-            <>
-              <Nav.Link href="/mainprofile" activeclassname="active">
-                Profile
-              </Nav.Link>
-              <Nav.Link href="/" activeclassname="active" onClick={logout}>
-                Log Out
-              </Nav.Link>
-            </>
-          ) : (
-            <>
-              <Nav.Link href="/login" activeclassname="active">
-                Log In
-              </Nav.Link>
-              <Nav.Link
-                href="/register"
-                activeclassname="active"
-                style={{ backgroundColor: "#fff", color: "black" }}
-              >
-                Sign Up
-              </Nav.Link>
-            </>
-          )}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <div className="flex justify-between items-center px-6 py-3 w-3/4 mx-auto text-white">
+      <h3 className="text-white mb-0">Folium</h3>
+      {userInfo ? (
+        <div className="flex space-x-6 mx-6 font-semibold text-base">
+          <Nav.Link
+            style={{ color: "white" }}
+            href="/mainprofile"
+            activeclassname="active"
+          >
+            Profile
+          </Nav.Link>
+          <Nav.Link style={{ color: "white" }} href="/" onClick={logout}>
+            Log Out
+          </Nav.Link>
+        </div>
+      ) : (
+        <div className="flex space-x-6 mx-6 font-semibold text-base">
+          <Nav.Link style={{ color: "white" }} href="/login">
+            Log In
+          </Nav.Link>
+          <Nav.Link href="/register" style={{ color: "white" }}>
+            Sign Up
+          </Nav.Link>
+        </div>
+      )}
+    </div>
   );
-};
+}

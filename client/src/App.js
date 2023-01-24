@@ -29,8 +29,7 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1 className="underline ">Hey</h1>
+    <div className="text-white">
       <Router>
         <Switch>
           <Route
