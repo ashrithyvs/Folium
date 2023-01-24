@@ -1,3 +1,4 @@
+import "./index.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
@@ -12,7 +13,6 @@ import UserForm from "./components/UserForm";
 import TempOne from "./pages/Temp1";
 import TempTwo from "./pages/Temp2";
 import { home } from "./utils/api";
-import "./index.css";
 
 function App() {
   const [portfolio, setPortfolio] = useState("/template");
@@ -30,6 +30,7 @@ function App() {
 
   return (
     <div>
+      <h1 className="underline ">Hey</h1>
       <Router>
         <Switch>
           <Route

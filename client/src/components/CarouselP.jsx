@@ -15,7 +15,6 @@ export default function () {
         style={{
           textAlign: "center",
           border: " 1px solid #999",
-          border: "inset 1px solid #333",
           borderRadius: "10px",
           webkitBoxShadow: "0px 0px 8px rgba(0, 255, 255, 0.4)",
           mozBoxShadow: "0px 0px 8px rgba(0, 255, 255, 0.4)",
