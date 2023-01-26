@@ -7,7 +7,7 @@ import Footer from "../tOneComp/Footer";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-export default function () {
+export default function Temp1() {
   let history = useHistory();
 
   function handleClick() {
@@ -16,7 +16,6 @@ export default function () {
 
   return (
     <div>
-      <Navbar />
       <div id="tempBorder">
         <Navbar />
         <About />

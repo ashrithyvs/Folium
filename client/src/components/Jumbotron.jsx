@@ -1,6 +1,4 @@
 import React from "react";
-import Button from "./Button";
-import { Jumbotron } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 function Jumbrotron(props) {
@@ -11,21 +9,16 @@ function Jumbrotron(props) {
     return history.push("/login");
   }
   return (
-    <Jumbotron id="jumbo">
-      <h1>Welcome {props.firstName}</h1>
-      <h1> Create and Customize a Portfolio </h1>
-      <p>
-        Beautiful designs, powerful features, and the freedom to build anything
-        you want. Portfolio Builder is both free and priceless at the same time.
-      </p>
-      <p>
-        <Button
-          onClick={handleClick}
-          className="btn btn-info btn-lg"
-          name="Get Started"
-        ></Button>
-      </p>
-    </Jumbotron>
+    <div className="bg-transparent flex flex-col text-left min-h-[90vh] justify-center">
+      <h4 className="text-5xl">Psst...!</h4>
+      <div className="mt-6">
+        <h4>
+          Want a free Portfolio website to showcase your projects, experience in
+          a aesthetic way?
+        </h4>
+        <h4>What are you waiting for? Login to get started!</h4>
+      </div>
+    </div>
   );
 }
 

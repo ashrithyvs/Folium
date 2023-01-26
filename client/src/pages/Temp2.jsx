@@ -9,8 +9,7 @@ import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./Temp1.css";
 
-export default function () {
-  const userInfo = window.localStorage.user;
+export default function Temp2() {
   let history = useHistory();
 
   function handleClick() {
@@ -19,7 +18,6 @@ export default function () {
 
   return (
     <div>
-      <Navbar />
       <div id="tempBorder">
         <Navbar />
         <About />

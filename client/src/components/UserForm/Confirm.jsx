@@ -14,50 +14,37 @@ import Toolbar from "@mui/material/Toolbar";
 import { grey } from "@mui/material/colors";
 import { withStyles } from "@mui/styles";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#17A2b8",
+export const Confirm = (props) => {
+  const {
+    state: {
+      navColor,
+      navText,
+      navImage,
+      introText,
+      introTitle,
+      bio,
+      aboutBgColor,
+      profileImage,
+      projectOneTitle,
+      projectOneText,
+      projectOneUrl,
+      projectOneImage,
+      projectTwoTitle,
+      projectTwoText,
+      projectTwoUrl,
+      projectTwoImage,
+      projectThreeTitle,
+      projectThreeText,
+      projectThreeUrl,
+      projectThreeImage,
+      resumeUrl,
+      githubLink,
+      linkdin,
+      footer,
     },
-    secondary: {
-      main: grey[900],
-    },
-  },
-});
-
-export class Confirm extends Component {
-  continue = (e) => {
+  } = props;
+  const cont = (e) => {
     e.preventDefault();
-    // PROCESS FORM //
-    const {
-      values: {
-        navColor,
-        navText,
-        navImage,
-        introText,
-        introTitle,
-        bio,
-        aboutBgColor,
-        profileImage,
-        projectOneTitle,
-        projectOneText,
-        projectOneUrl,
-        projectOneImage,
-        projectTwoTitle,
-        projectTwoText,
-        projectTwoUrl,
-        projectTwoImage,
-        projectThreeTitle,
-        projectThreeText,
-        projectThreeUrl,
-        projectThreeImage,
-        resumeUrl,
-        githubLink,
-        linkdin,
-        footer,
-      },
-    } = this.props;
-
     const newUser = {
       navColor: navColor,
       navText: navText,
@@ -89,224 +76,38 @@ export class Confirm extends Component {
       console.log(res);
     });
 
-    this.props.nextStep();
+    props.nextStep();
   };
-
-  back = (e) => {
+  const back = (e) => {
     e.preventDefault();
-    this.props.prevStep();
+    props.prevStep();
   };
-
-  render() {
-    const {
-      values: {
-        navColor,
-        navText,
-        navImage,
-        introText,
-        introTitle,
-        bio,
-        aboutBgColor,
-        profileImage,
-        projectOneTitle,
-        projectOneText,
-        projectOneUrl,
-        projectOneImage,
-        projectTwoTitle,
-        projectTwoText,
-        projectTwoUrl,
-        projectTwoImage,
-        projectThreeTitle,
-        projectThreeText,
-        projectThreeUrl,
-        projectThreeImage,
-        resumeUrl,
-        githubLink,
-        linkdin,
-        footer,
-      },
-    } = this.props;
-
-    const StyledButton = withStyles({
-      root: {
-        background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-        borderRadius: 3,
-        border: 0,
-        color: "white",
-        height: 36,
-        size: "large",
-        padding: "0 30px",
-        boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-      },
-      label: {
-        textTransform: "capitalize",
-      },
-    })(Button);
-
-    return (
-      <MuiThemeProvider theme={theme}>
-        <>
-          <Dialog open fullWidth maxWidth="lg">
-            <AppBar color="primary" position="static">
-              <Link to="/home">
-                <Icon color="secondary">backspace</Icon>
-              </Link>
-              <Toolbar>
-                <TypoGraphy variant="title" color="inherit">
-                  <h1>Confirm Your Details</h1>
-                </TypoGraphy>
-              </Toolbar>
-            </AppBar>
-            <List>
-              <ListItem>
-                <ListItemText primary="Nav Color" secondary={navColor} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Nav Text" secondary={navText} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Nav Image" secondary={navImage} />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary=" Introduction Text"
-                  secondary={introText}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary=" Introduction Title"
-                  secondary={introTitle}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="About Me" secondary={bio} />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="About background Image"
-                  secondary={aboutBgColor}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="profile Image"
-                  secondary={profileImage}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project One Title"
-                  secondary={projectOneTitle}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project One Text"
-                  secondary={projectOneText}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project One Url"
-                  secondary={projectOneUrl}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project One Image"
-                  secondary={projectOneImage}
-                />
-              </ListItem>
-
-              <ListItem>
-                <ListItemText
-                  primary="Project Two Title"
-                  secondary={projectTwoTitle}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project Two Text"
-                  secondary={projectTwoText}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project Two Url"
-                  secondary={projectTwoUrl}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project Two Image"
-                  secondary={projectTwoImage}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project Three Title"
-                  secondary={projectThreeTitle}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project Three Text"
-                  secondary={projectThreeText}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project Three Url"
-                  secondary={projectThreeUrl}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Project Three Image"
-                  secondary={projectThreeImage}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Resume Url" secondary={resumeUrl} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Github Link" secondary={githubLink} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="linkedIn" secondary={linkdin} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Footer" secondary={footer} />
-              </ListItem>
-            </List>
-            <br />
-
-            <div
-              className="row"
-              style={{ marginLeft: "auto", marginRight: "auto" }}
-            >
-              <div>
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  onClick={this.back}
-                >
-                  Back
-                </Button>
+  console.log(Object.keys(props.state));
+  return (
+    <div className="flex flex-col space-y-6 pt-4 px-3">
+      <div className="flex flex-col space-y-4">
+        {Object.keys(props.state).map((item, i) => {
+          if (i !== 0 || i !== 1) {
+            return (
+              <div className="flex justify-between">
+                <h4 className="text-xl">{item}</h4>
+                <h4 className="text-base">{props.state[item]}</h4>
               </div>
-              <div style={{ marginLeft: "10px", marginRight: "10px" }}>
-                <StyledButton variant="contained" onClick={this.continue}>
-                  CONFIRM
-                </StyledButton>
-              </div>
-            </div>
-            <br />
-          </Dialog>
-        </>
-      </MuiThemeProvider>
-    );
-  }
-}
+            );
+          }
+        })}
+      </div>
+      <div className="flex justify-center space-x-4">
+        <button className="custom-btn-outline max-w-min px-4" onClick={back}>
+          Back
+        </button>
+        <button className="custom-btn-outline max-w-min px-4" onClick={cont}>
+          Continue
+        </button>
+      </div>
+      <br />
+    </div>
+  );
+};
 
 export default Confirm;

@@ -1,201 +1,108 @@
-import React, { Component } from "react";
-import Dialog from "@mui/material/Dialog";
-import AppBar from "@mui/material/AppBar";
-import { ThemeProvider as MuiThemeProvider } from "@mui/styles";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { createTheme } from "@mui/material/styles";
-
-import { Link } from "react-router-dom";
-import Icon from "@mui/material/Icon";
-import TypoGraphy from "@mui/material/Typography";
-import Toolbar from "@mui/material/Toolbar";
-import { grey } from "@mui/material/colors";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#17A2b8",
-    },
-    secondary: {
-      main: grey[900],
-    },
-  },
-});
-
-export class ProjectDetails extends Component {
-  continue = (e) => {
+export const ProjectDetails = (props) => {
+  const cont = (e) => {
     e.preventDefault();
-    this.props.nextStep();
+    props.nextStep();
   };
 
-  back = (e) => {
+  const back = (e) => {
     e.preventDefault();
-    this.props.prevStep();
+    props.prevStep();
   };
 
-  render() {
-    const { values, handleChange } = this.props;
-    return (
-      <MuiThemeProvider theme={theme}>
-        <>
-          <Dialog open fullWidth maxWidth="lg">
-            <AppBar color="primary" position="static">
-              <Link to="/home">
-                <Icon color="secondary">backspace</Icon>
-              </Link>
-              <Toolbar>
-                <TypoGraphy variant="title" color="inherit">
-                  <h1>Enter Project Details</h1>
-                </TypoGraphy>
-              </Toolbar>
-            </AppBar>
-            <div className="container">
-              <TextField
-                placeholder="ProjectOneTitle"
-                label="Project One Title"
-                onChange={handleChange("projectOneTitle")}
-                defaultValue={values.projectOneTitle}
-                margin="normal"
-                fullWidth
-              />
-              <br />
-              <TextField
-                placeholder="ProjectOneText"
-                label="Project One Text"
-                onChange={handleChange("projectOneText")}
-                defaultValue={values.projectOneText}
-                margin="normal"
-                fullWidth
-              />
-              <br />
-              <TextField
-                placeholder="ProjectOneUrl"
-                label="Project One Link"
-                onChange={handleChange("projectOneUrl")}
-                defaultValue={values.projectOneUrl}
-                margin="normal"
-                fullWidth
-              />
-              <br />
-              <TextField
-                placeholder="projectOneImage"
-                label="Project One Image"
-                onChange={handleChange("projectOneImage")}
-                defaultValue={values.projectOneImage}
-                margin="normal"
-                fullWidth
-              />
-            </div>
+  const { state, handleChange } = props;
+  return (
+    <div className="flex flex-col space-y-6">
+      <div className="flex flex-col space-y-2">
+        <input
+          placeholder="Project One Title"
+          onChange={handleChange("projectOneTitle")}
+          defaultValue={state.projectOneTitle}
+          className="custom-input"
+        />
+        <input
+          placeholder="Project One Text"
+          onChange={handleChange("projectOneText")}
+          defaultValue={state.projectOneText}
+          className="custom-input"
+        />
+        <input
+          placeholder="Project One Url"
+          onChange={handleChange("projectOneUrl")}
+          defaultValue={state.projectOneUrl}
+          className="custom-input"
+        />
+        <input
+          placeholder="projectOne Image"
+          onChange={handleChange("projectOneImage")}
+          defaultValue={state.projectOneImage}
+          className="custom-input"
+        />
+      </div>
 
-            <br />
+      <div className="flex flex-col space-y-2">
+        <input
+          placeholder="Project Two Title"
+          onChange={handleChange("projectTwoTitle")}
+          defaultValue={state.projectTwoTitle}
+          className="custom-input"
+        />
+        <input
+          placeholder="Project Two Text"
+          onChange={handleChange("projectTwoText")}
+          defaultValue={state.projectTwoText}
+          className="custom-input"
+        />
+        <input
+          placeholder="Project Two Url"
+          onChange={handleChange("projectTwoUrl")}
+          defaultValue={state.projectTwoUrl}
+          className="custom-input"
+        />
+        <input
+          placeholder="projectTwo Image"
+          onChange={handleChange("projectTwoImage")}
+          defaultValue={state.projectTwoImage}
+          className="custom-input"
+        />
+      </div>
 
-            <div className="container">
-              <TextField
-                placeholder="ProjectTwoTitle"
-                label="Project Two Title"
-                onChange={handleChange("projectTwoTitle")}
-                defaultValue={values.projectTwoTitle}
-                margin="normal"
-                fullWidth
-              />
-              <br />
-              <TextField
-                placeholder="ProjectTwoText"
-                label="Project Two Text"
-                onChange={handleChange("projectTwoText")}
-                defaultValue={values.projectTwoText}
-                margin="normal"
-                fullWidth
-              />
-              <br />
-              <TextField
-                placeholder="ProjectTwoUrl"
-                label="Project Two Link"
-                onChange={handleChange("projectTwoUrl")}
-                defaultValue={values.projectTwoUrl}
-                margin="normal"
-                fullWidth
-              />
-              <TextField
-                placeholder="projectTwoImage"
-                label="Project Two Image"
-                onChange={handleChange("projectTwoImage")}
-                defaultValue={values.projectTwoImage}
-                margin="normal"
-                fullWidth
-              />
-            </div>
+      <div className="flex flex-col space-y-2">
+        <input
+          placeholder="Project Three Title"
+          onChange={handleChange("projectThreeTitle")}
+          defaultValue={state.projectThreeTitle}
+          className="custom-input"
+        />
+        <input
+          placeholder="Project Three Text"
+          onChange={handleChange("projectThreeText")}
+          defaultValue={state.projectThreeText}
+          className="custom-input"
+        />
+        <input
+          placeholder="Project Three Url"
+          onChange={handleChange("projectThreeUrl")}
+          defaultValue={state.projectThreeUrl}
+          className="custom-input"
+        />
+        <input
+          placeholder="Project Three Image"
+          onChange={handleChange("projectThreeImage")}
+          defaultValue={state.projectThreeImage}
+          className="custom-input"
+        />
+      </div>
 
-            <br />
-            <div className="container">
-              <TextField
-                placeholder="ProjectThreeTitle"
-                label="Project Three Title"
-                onChange={handleChange("projectThreeTitle")}
-                defaultValue={values.projectThreeTitle}
-                margin="normal"
-                fullWidth
-              />
-              <br />
-              <TextField
-                placeholder="ProjectThreeText"
-                label="Project Three Text"
-                onChange={handleChange("projectThreeText")}
-                defaultValue={values.projectThreeText}
-                margin="normal"
-                fullWidth
-              />
-              <br />
-              <TextField
-                placeholder="ProjectThreeUrl"
-                label="Project Three Link"
-                onChange={handleChange("projectThreeUrl")}
-                defaultValue={values.projectThreeUrl}
-                margin="normal"
-                fullWidth
-              />
-              <TextField
-                placeholder="projectThreeImage"
-                label="Project Three Image"
-                onChange={handleChange("projectThreeImage")}
-                defaultValue={values.projectThreeImage}
-                margin="normal"
-                fullWidth
-              />
-            </div>
-
-            <br />
-
-            <div
-              className="row"
-              style={{ marginLeft: "auto", marginRight: "auto" }}
-            >
-              <div>
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  onClick={this.back}
-                >
-                  Back
-                </Button>
-              </div>
-              <div style={{ marginLeft: "10px", marginRight: "10px" }}>
-                <Button
-                  color="primary"
-                  variant="contained"
-                  onClick={this.continue}
-                >
-                  Continue
-                </Button>
-              </div>
-            </div>
-            <br />
-          </Dialog>
-        </>
-      </MuiThemeProvider>
-    );
-  }
-}
+      <div className="flex justify-center space-x-4">
+        <button className="custom-btn-outline max-w-min px-4" onClick={back}>
+          Back
+        </button>
+        <button className="custom-btn-outline max-w-min px-4" onClick={cont}>
+          Continue
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default ProjectDetails;

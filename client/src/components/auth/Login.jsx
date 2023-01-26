@@ -7,7 +7,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDisabled: true,
+      isDisabled: false,
     };
     this.submitForm = this.submitForm.bind(this);
   }
@@ -73,10 +73,12 @@ class Login extends React.Component {
     return (
       <div>
         <Nav />
-        <div className="container">
-          <div className="card card-login mx-auto mt-5">
-            <div className="card-header text-primary text-center">Login</div>
-            <div className="card-body">
+        <div className="w-1/4 mx-auto min-h-[90vh] flex flex-col justify-center">
+          <div className="mx-auto w-full">
+            <h4 className="mb-4 text-center font-semibold text-3xl tracking-wider">
+              Login
+            </h4>
+            <div className="">
               <form id="signup-form">
                 <div className="form-group">
                   <div className="form-label-group">
@@ -84,7 +86,7 @@ class Login extends React.Component {
                       type="email"
                       id="email"
                       name="email"
-                      className="form-control"
+                      className="custom-input"
                       placeholder="Enter your email"
                       onChange={(e) => {
                         this.handleChange(e);
@@ -106,7 +108,7 @@ class Login extends React.Component {
                       type="password"
                       id="password"
                       name="password"
-                      className="form-control"
+                      className="custom-input"
                       placeholder="Password"
                       onChange={(e) => {
                         this.handleChange(e);
@@ -123,17 +125,17 @@ class Login extends React.Component {
                   </div>
                 </div>
                 <button
-                  className="btn btn-primary btn-block"
+                  className="custom-btn-outline"
                   disabled={this.state.isDisabled}
                   onClick={this.submitForm}
                 >
                   Login
                 </button>
               </form>
-              <p className="my-1 text-primary text-center">
+              <p className="my-1 text-white flex flex-col text-center">
                 Don't have an account?
-                <Link to="/register">
-                  <br></br>Sign Up
+                <Link to="/register" className="text-white">
+                  Sign Up
                 </Link>
               </p>
             </div>

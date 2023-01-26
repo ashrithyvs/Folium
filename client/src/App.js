@@ -13,6 +13,7 @@ import UserForm from "./components/UserForm";
 import TempOne from "./pages/Temp1";
 import TempTwo from "./pages/Temp2";
 import { home } from "./utils/api";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [portfolio, setPortfolio] = useState("/template");
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <div className="text-white">
+      <Navbar />
       <Router>
         <Switch>
           <Route
@@ -41,7 +43,6 @@ function App() {
           />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          <Route path="/userForm" component={UserForm} />
           <Route path="/quickdesign" component={QuickDesign} />
           <Route path="/mainprofile" component={MainProfile} />
           <Route path="/customtemplate" component={CustomTemplate} />

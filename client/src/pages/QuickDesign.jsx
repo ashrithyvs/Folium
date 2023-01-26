@@ -88,7 +88,6 @@ const QuickDesign = (props) => {
 
   return (
     <div>
-      <Navbar />
       <div className="grid">{cardInfo.map(renderCard)}</div>
     </div>
   );

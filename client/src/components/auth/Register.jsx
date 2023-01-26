@@ -102,7 +102,6 @@ class Register extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
         <div className="container">
           <div className="card card-login mx-auto mt-5">
             <div className="card-header text-primary text-center">

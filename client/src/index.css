@@ -9,9 +9,29 @@
 }
 
 * {
-  background-color: rgb(17 24 39);
+  background-color: #111827;
   font-family: proxima-nova;
   color: white;
+  scrollbar-width: auto;
+  scrollbar-color: #bdb4c0 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+  background: rgba(0, 0, 0, 0);
+}
+
+*::-webkit-scrollbar-track {
+  --webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #26292d;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #bdb4c0;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
 }
 
 h1,
@@ -21,4 +41,27 @@ h4,
 h5,
 h6 {
   margin-bottom: 0px;
+}
+
+.card-sm {
+  @apply bg-[#111827] container mx-auto 2xl:w-1/2 md:px-16 xl:px-16 py-10 rounded-2xl my-auto self-center flex flex-col justify-center text-slate-100;
+}
+.card-md {
+  @apply bg-[#111827] container mx-auto 2xl:w-2/3 md:px-16 xl:px-16 sm:px-10 px-8 py-10 rounded-2xl my-auto self-center flex flex-col justify-center text-slate-100;
+}
+.custom-input {
+  @apply bg-[#111827] px-4 py-2 w-full border-[#C4C4C4] border-[0.075rem] outline-slate-500 rounded;
+}
+.custom-input-sm {
+  @apply bg-[#111827] px-4 w-1/5 py-2 border-[#C4C4C4] border-[0.075rem] outline-slate-500 rounded;
+}
+.custom-input-md {
+  @apply bg-[#111827] px-4 w-3/5 py-2 border-[#C4C4C4] border-[0.075rem] outline-slate-500 rounded;
+}
+.custom-btn {
+  @apply bg-white text-[#111827] w-full border-[#C4C4C4] border-[0.075rem] outline-slate-500 rounded py-2 cursor-pointer  hover:bg-transparent hover:text-white;
+}
+
+.custom-btn-outline {
+  @apply bg-transparent text-white w-full border-[#C4C4C4] border-[0.075rem] outline-slate-500 rounded py-2 hover:bg-white hover:text-[#111827] cursor-pointer;
 }

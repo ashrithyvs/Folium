@@ -20,7 +20,6 @@ import Navbar from "../components/Navbar";
 function CustomPage() {
   return (
     <div>
-      <Navbar />{" "}
       <div id="tempBorder">
         <div className="img11">
           <Jumbotron />

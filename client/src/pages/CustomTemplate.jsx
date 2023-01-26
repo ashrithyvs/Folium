@@ -160,7 +160,7 @@ function generatePage() {
       customPage + '<div className="MyCom90">\n' + "<Button />\n" + "</div>\n";
   }
   if (document.getElementById("footer").checked) {
-    customPage = customPage + "<div>\n" + "<Footer />\n" + "</div>\n";
+    customPage = customPage + "<div>\n <Footer />\n </div>\n";
   }
 
   //  -------    Code to generate page here  --------
@@ -183,7 +183,6 @@ function generatePage() {
 function CustomTemplate() {
   return (
     <div>
-      <Navbar />
       <div className="customTemplate">
         <div className="PageTitle">
           <h1>Select components you want in your page? </h1>

@@ -1,169 +1,85 @@
-import React, { Component } from "react";
-import Dialog from "@mui/material/Dialog";
-import AppBar from "@mui/material/AppBar";
-import { ThemeProvider as MuiThemeProvider } from "@mui/styles";
-import { createTheme } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import Icon from "@mui/material/Icon";
-import TypoGraphy from "@mui/material/Typography";
-import Toolbar from "@mui/material/Toolbar";
-import MenuItem from "@mui/material/MenuItem";
-import { grey } from "@mui/material/colors";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#17A2b8",
-    },
-    secondary: {
-      main: grey[900],
-    },
-  },
-});
-
-export default class AboutMeDetails extends Component {
-  continue = (e) => {
+export default function AboutMeDetails(props) {
+  const cont = (e) => {
     e.preventDefault();
-    this.props.nextStep();
+    props.nextStep();
   };
 
-  back = (e) => {
+  const back = (e) => {
     e.preventDefault();
-    this.props.prevStep();
+    props.prevStep();
   };
 
-  render() {
-    const { values, handleChange } = this.props;
-    return (
-      <MuiThemeProvider theme={theme}>
-        <Dialog open fullWidth maxWidth="lg">
-          <AppBar color="primary" position="static">
-            <Link to="/home">
-              <Icon color="secondary">backspace</Icon>
-            </Link>
-            <Toolbar>
-              <TypoGraphy variant="title" color="inherit">
-                <h1>About Me</h1>
-              </TypoGraphy>
-            </Toolbar>
-          </AppBar>
-          <TextField
-            placeholder="Enter Text For Introduction"
-            label="Enter Text For Introduction"
-            onChange={handleChange("introText")}
-            defaultValue={values.introText}
-            margin="normal"
-            fullWidth
-          />
-          <br />
-          <TextField
-            placeholder="Enter Text Introduction Title"
-            label="Enter Text Introduction Title"
-            onChange={handleChange("introTitle")}
-            defaultValue={values.introTitle}
-            margin="normal"
-            fullWidth
-          />
-          <br />
-          <TextField
-            placeholder="Enter Text For About Me Section"
-            label="Enter Text For About Me Section"
-            onChange={handleChange("bio")}
-            defaultValue={values.bio}
-            margin="normal"
-            fullWidth
-          />
-          <br />
-          <TextField
-            id="select"
-            label="Background Color For About Me Page"
-            onChange={handleChange("aboutBgColor")}
-            defaultValue={values.aboutBgColor}
-            select
-          >
-            <br />
-            <MenuItem value="#A9A8A5">Silver Chalice</MenuItem>
-            <MenuItem value="#821717">Crimson Red</MenuItem>
-            <MenuItem value="#11306A">Royal Blue Dark</MenuItem>
-            <MenuItem value="#FAE779">Yellow Crayola</MenuItem>
-            <MenuItem value="#2A2C2E">Jet Black</MenuItem>
-          </TextField>
-          <br />
-          <TextField
-            placeholder="Profile Image"
-            label="Profile Image"
-            onChange={handleChange("profileImage")}
-            defaultValue={values.profileImage}
-            margin="normal"
-            fullWidth
-          />
-
-          <br />
-          <TextField
-            placeholder="Enter Your Resume Link"
-            label="Resume Link"
-            onChange={handleChange("resumeUrl")}
-            defaultValue={values.resumeUrl}
-            margin="normal"
-            fullWidth
-          />
-          <br />
-          <TextField
-            placeholder="Enter Your GitHub Link"
-            label="GitHub Link"
-            onChange={handleChange("githubLink")}
-            defaultValue={values.githubLink}
-            margin="normal"
-            fullWidth
-          />
-          <br />
-          <TextField
-            placeholder="Enter Your LinkedIn Link"
-            label="LinkedIn Link"
-            onChange={handleChange("linkdin")}
-            defaultValue={values.linkdin}
-            margin="normal"
-            fullWidth
-          />
-          <br />
-          <TextField
-            placeholder="Enter Text For Footer"
-            label="Footer"
-            onChange={handleChange("footer")}
-            defaultValue={values.footer}
-            margin="normal"
-            fullWidth
-          />
-          <br />
-          <div
-            className="row"
-            style={{ marginLeft: "auto", marginRight: "auto" }}
-          >
-            <div>
-              <Button
-                color="secondary"
-                justify="center"
-                variant="contained"
-                onClick={this.back}
-              >
-                Back
-              </Button>
-            </div>
-            <div style={{ marginLeft: "10px", marginRight: "10px" }}>
-              <Button
-                color="primary"
-                variant="contained"
-                onClick={this.continue}
-              >
-                Continue
-              </Button>
-            </div>
-          </div>
-          <br />
-        </Dialog>
-      </MuiThemeProvider>
-    );
-  }
+  const { state, handleChange } = props;
+  return (
+    <div className="flex flex-col space-y-6">
+      <input
+        className="custom-input"
+        placeholder="Enter Text For Introduction"
+        onChange={handleChange("introText")}
+        value={state.introText}
+      />
+      <input
+        className="custom-input"
+        placeholder="Enter Text Introduction Title"
+        onChange={handleChange("introTitle")}
+        defaultValue={state.introTitle}
+      />
+      <input
+        placeholder="Enter Text For About Me Section"
+        onChange={handleChange("bio")}
+        className="custom-input"
+        defaultValue={state.bio}
+      />
+      <select
+        placeholder="Background Color For About Me Page"
+        onChange={handleChange("aboutBgColor")}
+        className="custom-input"
+        defaultValue={state.aboutBgColor}
+      >
+        <option value="#A9A8A5">Silver Chalice</option>
+        <option value="#821717">Crimson Red</option>
+        <option value="#11306A">Royal Blue Dark</option>
+        <option value="#FAE779">Yellow Crayola</option>
+        <option value="#2A2C2E">Jet Black</option>
+      </select>
+      <input
+        placeholder="Profile Image"
+        onChange={handleChange("profileImage")}
+        className="custom-input"
+        defaultValue={state.profileImage}
+      />
+      <input
+        placeholder="Enter Your Resume Link"
+        onChange={handleChange("resumeUrl")}
+        defaultValue={state.resumeUrl}
+        className="custom-input"
+      />
+      <input
+        placeholder="Enter Your GitHub Link"
+        onChange={handleChange("githubLink")}
+        className="custom-input"
+        defaultValue={state.githubLink}
+      />
+      <input
+        placeholder="Enter Your LinkedIn Link"
+        onChange={handleChange("linkdin")}
+        className="custom-input"
+        defaultValue={state.linkdin}
+      />
+      <input
+        placeholder="Enter Text For Footer"
+        onChange={handleChange("footer")}
+        className="custom-input"
+        defaultValue={state.footer}
+      />
+      <div className="flex justify-center space-x-4">
+        <button className="custom-btn-outline max-w-min px-4" onClick={back}>
+          Back
+        </button>
+        <button className="custom-btn-outline max-w-min px-4" onClick={cont}>
+          Continue
+        </button>
+      </div>
+    </div>
+  );
 }

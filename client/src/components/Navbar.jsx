@@ -5,8 +5,12 @@ import { logout } from "../utils/api";
 export default function Navbar() {
   const userInfo = window.localStorage.user;
   return (
-    <div className="flex justify-between items-center px-6 py-3 w-3/4 mx-auto text-white">
-      <h3 className="text-white mb-0">Folium</h3>
+    <div className="flex justify-between items-center px-[10vw] py-4 mx-auto text-white">
+      <Nav.Link style={{ color: "white" }} href="/" activeclassname="active">
+        <h3 className="text-white mb-0 font-semibold tracking-widest text-4xl">
+          Folium
+        </h3>
+      </Nav.Link>
       {userInfo ? (
         <div className="flex space-x-6 mx-6 font-semibold text-base">
           <Nav.Link

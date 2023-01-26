@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { mainProfile } from "../../utils/api.js";
 
-export default () => {
+export default function NavBar() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [navColor, setNavColor] = useState("");
@@ -40,32 +40,36 @@ export default () => {
         setProfileImage({ profileImage });
         setIntroText({ introText });
         setIntroTitle({ introTitle });
-        setResumeUrl({resumeUrl});
-        setNavText({navText});
+        setResumeUrl({ resumeUrl });
+        setNavText({ navText });
         console.log(navImage);
       })
       .catch((err) => console.log(err));
   }, []);
-    return (
-<Navbar style={{borderTopLeftRadius: '20px', borderTopRightRadius: '20px'}} collapseOnSelect expand="lg" bg="dark" variant="dark">
-    <Navbar.Brand href="#home">{navText.navText}</Navbar.Brand>
-  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="mr-auto">
-      <NavDropdown title="MENU" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Home</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">About</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Projects</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Contact</NavDropdown.Item>
-      </NavDropdown>
-    </Nav>
-    <Nav>
-      <Nav.Link href={resumeUrl.resumeUrl}>
-        Resume
-      </Nav.Link>
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>
-    )
-};
+  return (
+    <Navbar
+      style={{ borderTopLeftRadius: "20px", borderTopRightRadius: "20px" }}
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+    >
+      <Navbar.Brand href="#home">{navText.navText}</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <NavDropdown title="MENU" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="#action/3.1">Home</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">About</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Projects</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.4">Contact</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+        <Nav>
+          <Nav.Link href={resumeUrl.resumeUrl}>Resume</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
+}
