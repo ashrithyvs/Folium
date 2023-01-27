@@ -115,7 +115,7 @@ class Login extends React.Component {
               )}
             </div>
             <button
-              className="custom-btn-outline"
+              className="custom-btn-outline w-full"
               disabled={this.state.isDisabled}
               onClick={this.submitForm}
             >

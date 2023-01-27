@@ -17,17 +17,15 @@ function Dashboard() {
   }
 
   return (
-    <div>
-      <div style={{ textAlign: "center" }}>
-        <h1> Select the level of portfolio customization below </h1>
-      </div>
+    <div className="flex flex-col items-center justify-center space-y-6">
+      {/* <h1> Select the level of portfolio customization below </h1> */}
       <UserForm />
-      <div className="MyCard50 img12">
-        <Card onClick={() => toggleModal("portfolioDetailsModal")}>
-          Template Design
-        </Card>
-      </div>
-      {}
+      <button
+        className="custom-btn-outline bg-[#111827]"
+        onClick={() => toggleModal("portfolioDetailsModal")}
+      >
+        Template Design
+      </button>
       {/* <div className="MyCard50 img11">
         <Card onClick={handleClickTwo}>Custom Design</Card>
       </div> */}

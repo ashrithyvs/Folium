@@ -19,18 +19,14 @@ export default function Profile() {
   }, []);
 
   return (
-    <div>
-      <div className="container min-h-[80vh]">
-        <div className=" text-center mt-5">
-          <div className="col-sm-8 mx-auto">
-            <h2 className="text-center">
-              Hello {firstName.firstName} {lastName.lastName}
-            </h2>
-            <h5>It's a good day to design your portfolio</h5>
-          </div>
-        </div>
-        <Dashboard />
+    <div className="w-2/3 min-h-[80vh] flex flex-col justify-center items-center mx-auto">
+      <div className="w-full text-center">
+        <h2 className="text-center">
+          Hello {firstName.firstName} {lastName.lastName}!
+        </h2>
+        <h5>It's a good day to design your portfolio</h5>
       </div>
+      <Dashboard />
     </div>
   );
 }
