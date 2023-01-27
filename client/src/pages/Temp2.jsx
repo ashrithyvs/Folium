@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../tTwoComp/Navbar";
 import About from "../tTwoComp/About";
-import Footer from "../tOneComp/Footer";
+import Footer from "../tOneComp/TempOneFooter";
 import Project from "../tTwoComp/Project";
 import ProjectCard from "../tTwoComp/ProjectCard";
 import Nav from "../components/Navbar";

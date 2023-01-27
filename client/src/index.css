@@ -44,10 +44,10 @@ h6 {
 }
 
 .card-sm {
-  @apply bg-[#111827] container mx-auto 2xl:w-1/2 md:px-16 xl:px-16 py-10 rounded-2xl my-auto self-center flex flex-col justify-center text-slate-100;
+  @apply bg-[#1b2232] container mx-auto 2xl:w-1/2 md:px-16 xl:px-16 py-10 rounded-2xl my-auto self-center flex flex-col justify-center text-slate-100;
 }
 .card-md {
-  @apply bg-[#111827] container mx-auto 2xl:w-2/3 md:px-16 xl:px-16 sm:px-10 px-8 py-10 rounded-2xl my-auto self-center flex flex-col justify-center text-slate-100;
+  @apply bg-[#1b2232] container mx-auto 2xl:w-2/3 md:px-16 xl:px-16 sm:px-10 px-8 py-10 rounded-2xl my-auto self-center flex flex-col justify-center text-slate-100;
 }
 .custom-input {
   @apply bg-[#111827] px-4 py-2 w-full border-[#C4C4C4] border-[0.075rem] outline-slate-500 rounded;

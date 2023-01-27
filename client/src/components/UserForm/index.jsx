@@ -92,7 +92,7 @@ export default function UserForm(props) {
     },
     {
       title: "Success",
-      component: <Success nextStep={history} state={state} />,
+      component: <Success history={history} state={state} />,
     },
   ];
   return (

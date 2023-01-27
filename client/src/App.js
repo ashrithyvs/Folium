@@ -10,7 +10,8 @@ import Login from "./components/auth/Login";
 import MainProfile from "./pages/MainProfile";
 import Footer from "./components/Footer";
 import UserForm from "./components/UserForm";
-import TempOne from "./pages/Temp1";
+import { Temp1, TempOneWrapper } from "./pages/Temp1";
+import Extra from "./pages/Extra";
 import TempTwo from "./pages/Temp2";
 import { home } from "./utils/api";
 import Navbar from "./components/Navbar";
@@ -47,7 +48,7 @@ function App() {
           <Route path="/mainprofile" component={MainProfile} />
           <Route path="/customtemplate" component={CustomTemplate} />
           <Route path="/custompage" component={CustomPage} />
-          <Route path={portfolio} component={TempOne} />
+          <Route path={portfolio} component={Temp1} />
           <Route path={portfolioTwo} component={TempTwo} />
         </Switch>
         <Footer />
