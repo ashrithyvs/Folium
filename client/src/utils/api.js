@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3001/",
+  baseURL: process.env.REACT_APP_BASE_URL,
   withCredentials: false,
 });
 // Front end route for signup
@@ -43,6 +43,7 @@ export const login = (user) => {
 
 //Routing for geeting name from user profile only to home page
 export const home = (user) => {
+  console.log(process.env.REACT_APP_BASE_URL);
   return instance
     .get("api/auth", {
       headers: {
