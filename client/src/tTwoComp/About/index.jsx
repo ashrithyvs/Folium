@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { mainProfile } from "../../utils/api.js";
-import "./style.css"
+import "./style.css";
 
 const AboutMe = () => {
   const [firstName, setFirstName] = useState("");
@@ -32,7 +32,7 @@ const AboutMe = () => {
         console.log(res.navColor);
         setFirstName({ firstName });
         setLastName({ lastName });
-        setResumeUrl({resumeUrl});
+        setResumeUrl({ resumeUrl });
         setNavColor({ navColor });
         setBio({ bio });
         setNavImage({ navImage });
@@ -44,35 +44,44 @@ const AboutMe = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div id="aboutme" className="jumbotron jumbotron-fluid m-0" style={{
-      backgroundImage: `url(${navImage.navImage})` }}>
+    <div
+      id="aboutme"
+      className="jumbotron jumbotron-fluid m-0"
+      style={{
+        backgroundImage: `url(${navImage.navImage})`,
+      }}
+    >
       <div className="container container-fluid p-5">
         <div className="row">
-          {(
+          {
             <div className="col-5 d-none d-lg-block align-self-center">
               <img
-                className="border border-secondary rounded-circle" id="profilePic"
+                className="border border-secondary rounded-circle"
+                id="profilePic"
                 src={profileImage.profileImage}
                 alt="profile-pic"
               />
             </div>
-          )}
-            <h1 className="display-4 mb-5 text-center">{introTitle.introTitle}</h1>
+          }
+          <h1 className="display-4 mb-5 text-center">
+            {introTitle.introTitle}
+          </h1>
           <p className="lead text-center">{introText.introText}</p>
           <h5>{bio.bio}</h5>
-            {(
-              <p className="lead" id="resume-btn">
-                <a
-                  className="btn btn-outline-dark btn-lg text-center"
-                  href={resumeUrl.resumeUrl} id="resume"
-                >
-                  Resume
-                </a>
-              </p>
-            )}
-          </div>
+          {
+            <p className="lead" id="resume-btn">
+              <a
+                className="btn btn-outline-dark btn-lg text-center"
+                href={resumeUrl.resumeUrl}
+                id="resume"
+              >
+                Resume
+              </a>
+            </p>
+          }
         </div>
       </div>
+    </div>
   );
 };
 

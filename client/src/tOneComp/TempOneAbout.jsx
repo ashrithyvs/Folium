@@ -1,8 +1,8 @@
 export default function About({ templateData }) {
-  console.log(templateData);
   return (
-    <div className="mb-5 text-white">
+    <div className="text-white">
       <div
+        id="#intro"
         className="min-h-[80vh] bg-cover flex items-center"
         style={{
           backgroundImage: `url(${templateData.navImage})`,
@@ -16,6 +16,7 @@ export default function About({ templateData }) {
         </div>
       </div>
       <div
+        id="about"
         className="w-2/3 mx-auto my-36 flex items-center rounded-2xl justify-between p-6"
         style={{ backgroundColor: templateData.navColor }}
       >

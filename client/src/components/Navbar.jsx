@@ -5,7 +5,7 @@ import { logout } from "../utils/api";
 export default function Navbar() {
   const userInfo = window.localStorage.user;
   return (
-    <div className="flex justify-between items-center px-[10vw] py-4 mx-auto text-white">
+    <div className="flex justify-between items-center px-[10vw] py-4 mx-auto sticky top-0 text-white">
       <Nav.Link style={{ color: "white" }} href="/" activeclassname="active">
         <h3 className="text-white mb-0 font-semibold tracking-widest text-4xl">
           Folium

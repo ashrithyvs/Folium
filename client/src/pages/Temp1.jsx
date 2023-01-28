@@ -10,7 +10,7 @@ export const TempOneWrapper = ({ templateData }) => {
   console.log(templateData);
   return (
     <div class="bg-[#111827] text-white">
-      <Navbar />
+      <Navbar templateData={templateData} />
       <About templateData={templateData} />
       <Projects templateData={templateData} />
       <Footer templateData={templateData} />
@@ -19,7 +19,7 @@ export const TempOneWrapper = ({ templateData }) => {
 };
 
 export const Temp1 = () => {
-  const [templateData, setTemplateData] = useState([]);
+  const [templateData, setTemplateData] = useState();
 
   useEffect(() => {
     mainProfile()
@@ -31,7 +31,7 @@ export const Temp1 = () => {
   }, []);
   return (
     <div>
-      {templateData.length !== 0 && (
+      {templateData && (
         <div className="flex flex-col justify-center">
           <TempOneWrapper templateData={templateData} />
           <button

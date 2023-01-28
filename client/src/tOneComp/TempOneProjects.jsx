@@ -1,6 +1,6 @@
 export default function TempOneProjects({ templateData }) {
   return (
-    <div className="flex space-x-6 px-24 justify-evenly">
+    <div id="projects" className="flex space-x-6 px-24 justify-evenly">
       <div className="bg-[#1b2232] container 2xl:w-1/2 md:px-8 xl:px-8 py-10 rounded-2xl flex flex-col items-center justify-center space-y-6">
         <a
           target="_blank"
