@@ -51,7 +51,7 @@ function clearPage() {
   // but we've already asked to go to page 'custompage', which loads the older page immediately.
 
   window.location.href = "custompage";
-  window.location.replace("/mainprofile");
+  window.location.replace("/");
 
   // to show the newly created custompage, we need to do a page refresh on the browser.
 }

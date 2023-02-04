@@ -18,11 +18,11 @@ export default function About({ templateData }) {
       <div
         id="about"
         className="w-2/3 mx-auto my-36 flex items-center rounded-2xl justify-between p-6"
-        style={{ backgroundColor: templateData.navColor }}
+        style={{ backgroundColor: templateData.aboutBgColor }}
       >
         <img
           alt={`${templateData.user.firstName} ${templateData.user.lastName}`}
-          className="rounded-full min-w-[10vw]"
+          className="rounded-full min-w-[10vw] max-h-[20vh]"
           src={templateData.profileImage}
         />{" "}
         <div className="flex flex-col w-4/5 bg-transparent">

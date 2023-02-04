@@ -13,7 +13,7 @@ class Register extends React.Component {
   }
   validateEmail(email) {
     const pattern =
-      /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
+      /[a-zA-Z0-9]+[.]?([a-zA-Z0-9]+)?[@][a-z]{3,9}[.][a-z]{2,5}/g;
     const result = pattern.test(email);
     if (result === true) {
       this.setState({
@@ -181,14 +181,14 @@ class Register extends React.Component {
                 )}
               </div>
               <button
-                className="custom-btn-outline"
-                disabled={this.state.isDisabled}
+                className="custom-btn-outline w-full"
+                // disabled={this.state.isDisabled}
                 onClick={this.submitForm}
               >
                 Signup
               </button>
             </form>
-            <p className="my-1 text-white flex flex-col text-center">
+            <p className="mt-3 text-white flex flex-col text-center">
               Already have an account
               <Link to="/login" className="text-white">
                 Sign In

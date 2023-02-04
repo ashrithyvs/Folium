@@ -26,7 +26,7 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// router.get('/mainprofile', auth, async (req, res) => {
+// router.get('/', auth, async (req, res) => {
 //   try {
 //     const user = await Profile.findById(req.user.id);
 //     res.json(user);

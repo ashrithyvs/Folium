@@ -6,7 +6,7 @@ export const Success = (props) => {
       document
         .getElementById("portfolioDetailsModal")
         .classList.toggle("hidden");
-      props.history.push("/quickdesign");
+      props.history.push("/templates");
     }, 3000);
   }, []);
   return (

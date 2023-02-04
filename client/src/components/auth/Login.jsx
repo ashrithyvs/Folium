@@ -65,7 +65,8 @@ class Login extends React.Component {
     };
     login(data).then((res) => {
       // When user logs in they will be directed to mainprofile page
-      this.props.history.push("/mainprofile");
+      window.location.reload();
+      window.location.href = "/dashboard";
     });
   }
   render() {
@@ -122,7 +123,7 @@ class Login extends React.Component {
               Login
             </button>
           </form>
-          <p className="my-1 text-white flex flex-col text-center">
+          <p className="mt-3 text-white flex flex-col text-center">
             Don't have an account?
             <Link to="/register" className="text-white">
               Sign Up

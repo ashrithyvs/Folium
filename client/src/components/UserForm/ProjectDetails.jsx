@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export const ProjectDetails = (props) => {
+  const [projectsCount, setProjectsCount] = useState();
+  const [showFields, setShowFields] = useState(false);
   const cont = (e) => {
     e.preventDefault();
     props.nextStep();
@@ -9,10 +13,72 @@ export const ProjectDetails = (props) => {
     props.prevStep();
   };
 
-  const { state, handleChange } = props;
+  const handleProjectCount = () => {
+    if (projectsCount !== undefined) {
+      let temp = Array.from({ length: projectsCount }).map(() => {
+        return { title: "", desc: "", url: "", img: "" };
+      });
+      setState((prev) => ({ ...prev, projects: temp }));
+      setShowFields(true);
+    } else setProjectsCount(0);
+  };
+
+  const { state, handleChange, projectsHandleChange, setState } = props;
   return (
     <div className="flex flex-col space-y-6">
       <div className="flex flex-col space-y-2">
+        {/* <div className="flex space-x-3">
+          <input
+            type="number"
+            className="custom-input"
+            placeholder="Enter Projects Count"
+            value={projectsCount}
+            onChange={(e) => {
+              setProjectsCount(
+                e.target.value !== undefined ? e.target.value : 0
+              );
+            }}
+          />
+          <button className="custom-btn px-4" onClick={handleProjectCount}>
+            Done
+          </button>
+        </div>
+        <div className="flex flex-col space-y-6">
+          {projectsCount !== 0 &&
+            projectsCount !== undefined &&
+            showFields &&
+            Object.entries(state.projects).map((item, idx) => {
+              return (
+                <div key={idx} className="flex flex-col my-2 space-y-2">
+                  <h4 className="text-base"> {`Project ${idx + 1}:`}</h4>
+                  <input
+                    placeholder={`Project ${idx + 1} Title`}
+                    onChange={projectsHandleChange(idx, "title")}
+                    value={state.projects[idx].title}
+                    className="custom-input"
+                  />
+                  <input
+                    placeholder={`Project ${idx + 1} Description`}
+                    onChange={projectsHandleChange(idx, "desc")}
+                    value={state.projects[idx].desc}
+                    className="custom-input"
+                  />
+                  <input
+                    placeholder={`Project ${idx + 1} URL`}
+                    onChange={projectsHandleChange(idx, "Url")}
+                    value={state.projects[idx].url}
+                    className="custom-input"
+                  />
+                  <input
+                    placeholder={`Project ${idx + 1} Image`}
+                    onChange={projectsHandleChange(idx, "img")}
+                    value={state.projects[idx].img}
+                    className="custom-input"
+                  />
+                </div>
+              );
+            })}
+        </div> */}
         <input
           placeholder="Project One Title"
           onChange={handleChange("projectOneTitle")}
@@ -20,7 +86,7 @@ export const ProjectDetails = (props) => {
           className="custom-input"
         />
         <input
-          placeholder="Project One Text"
+          placeholder="Project One Description"
           onChange={handleChange("projectOneText")}
           defaultValue={state.projectOneText}
           className="custom-input"
@@ -47,7 +113,7 @@ export const ProjectDetails = (props) => {
           className="custom-input"
         />
         <input
-          placeholder="Project Two Text"
+          placeholder="Project Two Description"
           onChange={handleChange("projectTwoText")}
           defaultValue={state.projectTwoText}
           className="custom-input"
@@ -74,7 +140,7 @@ export const ProjectDetails = (props) => {
           className="custom-input"
         />
         <input
-          placeholder="Project Three Text"
+          placeholder="Project Three Description"
           onChange={handleChange("projectThreeText")}
           defaultValue={state.projectThreeText}
           className="custom-input"

@@ -14,60 +14,59 @@ export default function AboutMeDetails(props) {
     <div className="flex flex-col space-y-6">
       <input
         className="custom-input"
-        placeholder="Enter Text For Introduction"
-        onChange={handleChange("introText")}
-        value={state.introText}
-      />
-      <input
-        className="custom-input"
-        placeholder="Enter Text Introduction Title"
+        placeholder="Introduction Title"
         onChange={handleChange("introTitle")}
         defaultValue={state.introTitle}
       />
       <input
-        placeholder="Enter Text For About Me Section"
+        className="custom-input"
+        placeholder="Introduction subTitle"
+        onChange={handleChange("introText")}
+        value={state.introText}
+      />
+
+      <input
+        placeholder="Bio"
         onChange={handleChange("bio")}
         className="custom-input"
         defaultValue={state.bio}
       />
       <select
-        placeholder="Background Color For About Me Page"
+        placeholder="Background Color"
         onChange={handleChange("aboutBgColor")}
         className="custom-input"
-        defaultValue={state.aboutBgColor}
+        defaultValue="#2A2C2E"
       >
-        <option value="#A9A8A5">Silver Chalice</option>
+        <option value="#2A2C2E">Jet Black</option>
         <option value="#821717">Crimson Red</option>
         <option value="#11306A">Royal Blue Dark</option>
-        <option value="#FAE779">Yellow Crayola</option>
-        <option value="#2A2C2E">Jet Black</option>
       </select>
       <input
-        placeholder="Profile Image"
+        placeholder="Your photo"
         onChange={handleChange("profileImage")}
         className="custom-input"
         defaultValue={state.profileImage}
       />
       <input
-        placeholder="Enter Your Resume Link"
+        placeholder="Resume PDF Link"
         onChange={handleChange("resumeUrl")}
         defaultValue={state.resumeUrl}
         className="custom-input"
       />
       <input
-        placeholder="Enter Your GitHub Link"
+        placeholder="GitHub Link"
         onChange={handleChange("githubLink")}
         className="custom-input"
         defaultValue={state.githubLink}
       />
       <input
-        placeholder="Enter Your LinkedIn Link"
+        placeholder="LinkedIn Profile Link"
         onChange={handleChange("linkdin")}
         className="custom-input"
         defaultValue={state.linkdin}
       />
       <input
-        placeholder="Enter Text For Footer"
+        placeholder="Footer Text"
         onChange={handleChange("footer")}
         className="custom-input"
         defaultValue={state.footer}

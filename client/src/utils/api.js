@@ -37,13 +37,12 @@ export const login = (user) => {
       console.log(err);
       // Handling the error and reload page
       alert("Please enter valid information");
-      window.location.reload();
+      window.location.href = "/dashboard";
     });
 };
 
 //Routing for geeting name from user profile only to home page
 export const home = (user) => {
-  console.log(process.env.REACT_APP_BASE_URL);
   return instance
     .get("api/auth", {
       headers: {
@@ -88,6 +87,7 @@ export function getCurrentUser() {
 
 export function logout() {
   localStorage.removeItem("user");
+  window.location.reload();
 }
 
 // Post route for profile from wizard
@@ -108,7 +108,7 @@ export const profile = (newUser) => {
         projectOneTitle: newUser.projectOneTitle,
         projectOneText: newUser.projectOneText,
         projectOneUrl: newUser.projectOneUrl,
-        projectOneImage: newUser.projectOneImage,
+        projectOneImage: newUser.projectOneImageeducation,
         projectTwoTitle: newUser.projectTwoTitle,
         projectTwoText: newUser.projectTwoText,
         projectTwoUrl: newUser.projectTwoUrl,
@@ -121,6 +121,8 @@ export const profile = (newUser) => {
         githubLink: newUser.githubLink,
         linkdin: newUser.linkdin,
         footer: newUser.footer,
+        education: newUser.education,
+        experience: newUser.experience,
       },
       {
         headers: {
@@ -132,7 +134,7 @@ export const profile = (newUser) => {
       }
     )
     .then((response) => {
-      console.log("profile send to backend");
+      console.log("profile sent to backend");
       return response.data;
     })
     .catch((err) => {

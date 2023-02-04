@@ -6,16 +6,12 @@ const auth = require("../../middleware/auth");
 //importing module
 const Profile = require("../../models/profile.js");
 const User = require("../../models/Users.js");
-//  router.get("/me",(req,res)=> res.send("i am hit"));
 
 router.get("/me", auth, async (req, res) => {
-  // res.send("i m hit")
-  console.log(req.user.id);
   try {
     const profile = await Profile.findOne({
       user: req.user.id,
     }).populate("user", ["firstName", "lastName", "avatar", "email"]);
-
     if (!profile) {
       return res.status(400).json({ msg: "There is no profile for this user" });
     }
@@ -36,71 +32,73 @@ router.post(
   auth,
 
   async (req, res) => {
-    console.log(req.user);
-    console.log(req.body);
-
     //object destructing
-    const {
-      navColor,
-      navText,
-      navImage,
-      introText,
-      introTitle,
-      bio,
-      aboutBgColor,
-      profileImage,
-      projectOneTitle,
-      projectOneText,
-      projectOneUrl,
-      projectOneImage,
-      projectTwoTitle,
-      projectTwoText,
-      projectTwoUrl,
-      projectTwoImage,
-      projectThreeTitle,
-      projectThreeText,
-      projectThreeUrl,
-      projectThreeImage,
-      resumeUrl,
-      githubLink,
-      linkdin,
-      footer,
-    } = req.body;
-
-    const profileFields = {
-      user: req.user.id,
-      navColor,
-      navText,
-      navImage,
-      introText,
-      introTitle,
-      bio,
-      aboutBgColor,
-      profileImage,
-      projectOneTitle,
-      projectOneText,
-      projectOneUrl,
-      projectOneImage,
-      projectTwoTitle,
-      projectTwoText,
-      projectTwoUrl,
-      projectTwoImage,
-      projectThreeTitle,
-      projectThreeText,
-      projectThreeUrl,
-      projectThreeImage,
-      resumeUrl,
-      githubLink,
-      linkdin,
-      footer,
-    };
+    // const {
+    //   navColor,
+    //   navText,
+    //   navImage,
+    //   introText,
+    //   introTitle,
+    //   bio,
+    //   aboutBgColor,
+    //   profileImage,
+    //   projectOneTitle,
+    //   projectOneText,
+    //   projectOneUrl,
+    //   projectOneImage,
+    //   projectTwoTitle,
+    //   projectTwoText,
+    //   projectTwoUrl,
+    //   projectTwoImage,
+    //   projectThreeTitle,
+    //   projectThreeText,
+    //   projectThreeUrl,
+    //   projectThreeImage,
+    //   resumeUrl,
+    //   githubLink,
+    //   linkdin,
+    //   footer,
+    //   education,
+    //   experience,
+    // } = req.body;
+    // const profileFields = {
+    //   user: req.user.id,
+    //   navColor,
+    //   navText,
+    //   navImage,
+    //   introText,
+    //   introTitle,
+    //   bio,
+    //   aboutBgColor,
+    //   profileImage,
+    //   projectOneTitle,
+    //   projectOneText,
+    //   projectOneUrl,
+    //   projectOneImage,
+    //   projectTwoTitle,
+    //   projectTwoText,
+    //   projectTwoUrl,
+    //   projectTwoImage,
+    //   projectThreeTitle,
+    //   projectThreeText,
+    //   projectThreeUrl,
+    //   projectThreeImage,
+    //   resumeUrl,
+    //   githubLink,
+    //   linkdin,
+    //   footer,
+    //   education,
+    //   experience,
+    // };
     try {
       //and create instance of new user
-      let profile = await Profile.findAndModify(
+      console.log({ ...req.body });
+      let profile = await Profile.findOneAndUpdate(
         { user: req.user.id },
-        { $set: profileFields },
+        { $set: { ...req.body } },
         { new: true, upsert: true }
       );
+
       res.json(profile);
       console.log("from backend profile ", profile);
     } catch (err) {

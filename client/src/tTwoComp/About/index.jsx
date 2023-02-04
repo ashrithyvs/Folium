@@ -59,7 +59,7 @@ const AboutMe = () => {
                 className="border border-secondary rounded-circle"
                 id="profilePic"
                 src={profileImage.profileImage}
-                alt="profile-pic"
+                alt="mainProfile-pic"
               />
             </div>
           }

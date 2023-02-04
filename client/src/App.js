@@ -1,55 +1,41 @@
 import "./index.css";
-import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./pages/Home";
-import QuickDesign from "./pages/QuickDesign";
+import LandingPage from "./pages/LandingPage";
+import Templates from "./pages/Templates";
 import CustomTemplate from "./pages/CustomTemplate";
 import CustomPage from "./pages/CustomPage";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import MainProfile from "./pages/MainProfile";
+import Dashboard from "./pages/Dashboard";
 import Footer from "./components/Footer";
-import UserForm from "./components/UserForm";
-import { Temp1, TempOneWrapper } from "./pages/Temp1";
-import Extra from "./pages/Extra";
+import { Temp1 } from "./pages/Temp1";
 import TempTwo from "./pages/Temp2";
-import { home } from "./utils/api";
 import Navbar from "./components/Navbar";
+import { Temp3 } from "./pages/Temp3";
 
 function App() {
-  const [portfolio, setPortfolio] = useState("/template");
-  const [portfolioTwo, setPortfolioTwo] = useState("/template");
-
-  useEffect(() => {
-    home()
-      .then((res) => {
-        const { firstName, lastName } = res;
-        setPortfolio(`/${firstName}${lastName}`);
-        setPortfolioTwo(`/${firstName}${lastName}2`);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
+  const userInfo = window.localStorage.user;
   return (
-    <div className="text-white">
-      <Navbar />
+    <div className="text-white bg-[#111827]">
       <Router>
+        <Navbar />
         <Switch>
           <Route
             exact
-            path={["/", "/home"]}
+            path={["/", "/dashboard"]}
             activeClassName="active"
             eventKey="/"
-            component={Home}
+            component={userInfo ? Dashboard : LandingPage}
           />
+          {/* <Route path="/" component={MainProfile} /> */}
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          <Route path="/quickdesign" component={QuickDesign} />
-          <Route path="/mainprofile" component={MainProfile} />
+          <Route path="/templates" component={Templates} />
           <Route path="/customtemplate" component={CustomTemplate} />
           <Route path="/custompage" component={CustomPage} />
-          <Route path={portfolio} component={Temp1} />
-          <Route path={portfolioTwo} component={TempTwo} />
+          <Route path="/template-one" component={Temp1} />
+          <Route path="/template-two" component={TempTwo} />
+          <Route path="/template-three" component={Temp3} />
         </Switch>
         <Footer />
       </Router>
