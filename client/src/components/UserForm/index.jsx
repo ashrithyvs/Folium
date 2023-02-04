@@ -55,7 +55,6 @@ export default function UserForm(props) {
           ...res,
           navColor: "#2A2C2E",
           aboutBgColor: "#2A2C2E",
-          skills: [],
         });
       })
       .catch((err) => console.log(err));

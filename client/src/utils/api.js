@@ -123,6 +123,7 @@ export const profile = (newUser) => {
         footer: newUser.footer,
         education: newUser.education,
         experience: newUser.experience,
+        skills: newUser.skills,
       },
       {
         headers: {

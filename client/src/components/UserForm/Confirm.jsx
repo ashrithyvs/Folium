@@ -29,6 +29,7 @@ export const Confirm = (props) => {
       footer,
       experience,
       education,
+      skills,
     },
   } = props;
   const cont = (e) => {
@@ -60,6 +61,7 @@ export const Confirm = (props) => {
       footer: footer,
       education: education,
       experience: experience,
+      skills: skills,
     };
     console.log("from confirm page front end", newUser);
     profile(newUser)
