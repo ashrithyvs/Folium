@@ -42,7 +42,7 @@ export default function UserForm(props) {
     githubLink: "",
     linkdin: "",
     footer: "",
-    projects: {},
+    projects: [],
     education: [],
     experience: [],
     skills: [],
@@ -193,7 +193,6 @@ export default function UserForm(props) {
                   ...templateData,
                   navColor: "#2A2C2E",
                   aboutBgColor: "#2A2C2E",
-                  skills: [],
                 });
                 document
                   .getElementById("portfolioDetailsModal")

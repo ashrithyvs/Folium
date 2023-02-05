@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 export const ProjectDetails = (props) => {
-  const [projectsCount, setProjectsCount] = useState();
-  const [showFields, setShowFields] = useState(false);
+  const [projectsListItem, setprojectsListItem] = useState("");
+  const { state, handleChange, setState } = props;
+  const [projectsList, setprojectsList] = useState(state.projects);
   const cont = (e) => {
     e.preventDefault();
+    setState((prev) => ({ ...prev, projects: projectsList }));
     props.nextStep();
   };
 
@@ -13,73 +15,112 @@ export const ProjectDetails = (props) => {
     props.prevStep();
   };
 
-  const handleProjectCount = () => {
-    if (projectsCount !== undefined) {
-      let temp = Array.from({ length: projectsCount }).map(() => {
-        return { title: "", desc: "", url: "", img: "" };
-      });
-      setState((prev) => ({ ...prev, projects: temp }));
-      setShowFields(true);
-    } else setProjectsCount(0);
+  const handleProjectsCount = () => {
+    setprojectsList((prev) => [
+      ...prev,
+      {
+        id: projectsList.length + 1,
+        title: projectsListItem,
+        desc: "",
+        url: "",
+        imageUrl: "",
+        tech: "",
+        from: "",
+        to: "",
+      },
+    ]);
+
+    setprojectsListItem("");
+  };
+  const projectsListHandleChange = (idx, field) => (e) => {
+    let newArr = [...projectsList];
+    newArr[idx - 1][e.target.name] = e.target.value;
+    setprojectsList(newArr);
   };
 
-  const { state, handleChange, projectsHandleChange, setState } = props;
   return (
     <div className="flex flex-col space-y-6">
       <div className="flex flex-col space-y-2">
-        {/* <div className="flex space-x-3">
+        <div className="flex space-x-3">
           <input
-            type="number"
             className="custom-input"
-            placeholder="Enter Projects Count"
-            value={projectsCount}
+            placeholder="Project Title"
+            value={projectsListItem}
             onChange={(e) => {
-              setProjectsCount(
-                e.target.value !== undefined ? e.target.value : 0
-              );
+              setprojectsListItem(e.target.value);
             }}
           />
-          <button className="custom-btn px-4" onClick={handleProjectCount}>
+          <button className="custom-btn px-4" onClick={handleProjectsCount}>
             Done
           </button>
         </div>
         <div className="flex flex-col space-y-6">
-          {projectsCount !== 0 &&
-            projectsCount !== undefined &&
-            showFields &&
-            Object.entries(state.projects).map((item, idx) => {
-              return (
-                <div key={idx} className="flex flex-col my-2 space-y-2">
-                  <h4 className="text-base"> {`Project ${idx + 1}:`}</h4>
-                  <input
-                    placeholder={`Project ${idx + 1} Title`}
-                    onChange={projectsHandleChange(idx, "title")}
-                    value={state.projects[idx].title}
-                    className="custom-input"
-                  />
-                  <input
-                    placeholder={`Project ${idx + 1} Description`}
-                    onChange={projectsHandleChange(idx, "desc")}
-                    value={state.projects[idx].desc}
-                    className="custom-input"
-                  />
-                  <input
-                    placeholder={`Project ${idx + 1} URL`}
-                    onChange={projectsHandleChange(idx, "Url")}
-                    value={state.projects[idx].url}
-                    className="custom-input"
-                  />
-                  <input
-                    placeholder={`Project ${idx + 1} Image`}
-                    onChange={projectsHandleChange(idx, "img")}
-                    value={state.projects[idx].img}
-                    className="custom-input"
-                  />
-                </div>
-              );
+          {projectsList.length !== 0 &&
+            projectsList.map((item, idx) => {
+              if (!item._id) {
+                return (
+                  <div key={idx} className="flex flex-col my-2 space-y-2">
+                    <h4 className="text-base">{item.title}</h4>
+                    <input
+                      placeholder="Description"
+                      onChange={projectsListHandleChange(item.id, "desc")}
+                      name="desc"
+                      value={item.desc}
+                      className="custom-input"
+                    />
+                    {/* <input
+                      placeholder="Affliation"
+                      name="aff"
+                      onChange={projectsListHandleChange(item.id, "aff")}
+                      value={item.aff}
+                      className="custom-input"
+                    /> */}
+                    <input
+                      placeholder="Project URL"
+                      name="url"
+                      onChange={projectsListHandleChange(item.id, "url")}
+                      value={item.url}
+                      className="custom-input"
+                    />{" "}
+                    <input
+                      placeholder="Image URL"
+                      name="imageUrl"
+                      onChange={projectsListHandleChange(item.id, "imageUrl")}
+                      value={item.imageUrl}
+                      className="custom-input"
+                    />
+                    <input
+                      placeholder="Technologies used"
+                      onChange={projectsListHandleChange(item.id, "tech")}
+                      name="tech"
+                      value={item.tech}
+                      className="custom-input"
+                    />
+                    <div className="w-full flex space-x-4">
+                      <input
+                        type="number"
+                        placeholder="From"
+                        onChange={projectsListHandleChange(item.id, "from")}
+                        name="from"
+                        value={item.from}
+                        className="custom-input w-1/2"
+                      />
+                      <input
+                        type="number"
+                        placeholder="To"
+                        onChange={projectsListHandleChange(item.id, "to")}
+                        name="to"
+                        value={item.to}
+                        className="custom-input w-1/2"
+                      />
+                    </div>
+                  </div>
+                );
+              }
+              return null;
             })}
-        </div> */}
-        <input
+        </div>
+        {/* <input
           placeholder="Project One Title"
           onChange={handleChange("projectOneTitle")}
           defaultValue={state.projectOneTitle}
@@ -102,10 +143,10 @@ export const ProjectDetails = (props) => {
           onChange={handleChange("projectOneImage")}
           defaultValue={state.projectOneImage}
           className="custom-input"
-        />
+        /> */}
       </div>
 
-      <div className="flex flex-col space-y-2">
+      {/* <div className="flex flex-col space-y-2">
         <input
           placeholder="Project Two Title"
           onChange={handleChange("projectTwoTitle")}
@@ -157,7 +198,7 @@ export const ProjectDetails = (props) => {
           defaultValue={state.projectThreeImage}
           className="custom-input"
         />
-      </div>
+      </div> */}
 
       <div className="flex justify-center space-x-4">
         <button className="custom-btn-outline max-w-min px-4" onClick={back}>

@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema({
   education: { type: Array },
   experience: { type: Array },
   skills: { type: Array },
+  projects: { type: Array },
   date: { type: Date, default: Date.now },
   // CustomPage {    }
 });

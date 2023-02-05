@@ -1,3 +1,10 @@
+import {
+  AiFillLinkedin,
+  AiFillGithub,
+  AiFillFilePdf,
+  AiFillMail,
+} from "react-icons/ai";
+
 export default function TempOneFooter({ templateData }) {
   return (
     <div
@@ -7,17 +14,17 @@ export default function TempOneFooter({ templateData }) {
       <h4 className="text-base m-0 italic font-semibold">
         {templateData.footer}
       </h4>
-      <a className="text-white" href={`mailto:${templateData.user.email}`}>
-        {templateData.user.email}
+      <a href={`mailto:${templateData.user.email}`}>
+        <AiFillMail size={24} />
       </a>
-      <a className="text-white" href={templateData.resumeUrl}>
-        Resume
+      <a href={templateData.resumeUrl} target="_blank" rel="noreferrer">
+        <AiFillFilePdf size={24} />
       </a>
-      <a className="text-white" href={templateData.githubLink}>
-        Github
+      <a href={templateData.githubLink} target="_blank" rel="noreferrer">
+        <AiFillGithub size={24} />
       </a>
-      <a className="text-white" href={templateData.linkdin}>
-        LinkedIn
+      <a href={templateData.linkdin} target="_blank" rel="noreferrer">
+        <AiFillLinkedin size={24} />
       </a>
     </div>
   );

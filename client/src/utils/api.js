@@ -124,6 +124,7 @@ export const profile = (newUser) => {
         education: newUser.education,
         experience: newUser.experience,
         skills: newUser.skills,
+        projects: newUser.projects,
       },
       {
         headers: {

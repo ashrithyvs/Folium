@@ -30,6 +30,7 @@ export const Confirm = (props) => {
       experience,
       education,
       skills,
+      projects,
     },
   } = props;
   const cont = (e) => {
@@ -62,6 +63,7 @@ export const Confirm = (props) => {
       education: education,
       experience: experience,
       skills: skills,
+      projects: projects,
     };
     console.log("from confirm page front end", newUser);
     profile(newUser)
@@ -80,7 +82,6 @@ export const Confirm = (props) => {
     <div className="flex flex-col space-y-6 pt-4 px-3">
       <div className="flex flex-col space-y-4">
         {Object.keys(props.state).map((item, i) => {
-          console.log(item, "outside");
           if (
             item !== "firstName" &&
             item !== "lastName" &&
@@ -93,7 +94,6 @@ export const Confirm = (props) => {
             item !== "skills" &&
             item !== "date"
           ) {
-            console.log(item, "inside");
             return (
               <div
                 key={i}
