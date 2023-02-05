@@ -22,7 +22,7 @@ export default function About({ templateData }) {
       >
         <img
           alt={`${templateData.user.firstName} ${templateData.user.lastName}`}
-          className="rounded-full min-w-[10vw] max-h-[20vh]"
+          className="rounded-full min-w-[10vw] max-w-[10vw] min-h-[20vh] max-h-[20vh]"
           src={templateData.profileImage}
         />{" "}
         <div className="flex flex-col w-4/5 bg-transparent">

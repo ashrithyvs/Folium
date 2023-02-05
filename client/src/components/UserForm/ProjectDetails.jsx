@@ -16,6 +16,7 @@ export const ProjectDetails = (props) => {
   };
 
   const handleProjectsCount = () => {
+    console.log(projectsList);
     setprojectsList((prev) => [
       ...prev,
       {
@@ -55,12 +56,20 @@ export const ProjectDetails = (props) => {
           </button>
         </div>
         <div className="flex flex-col space-y-6">
-          {projectsList.length !== 0 &&
+          {projectsList &&
+            projectsList.length !== 0 &&
             projectsList.map((item, idx) => {
               if (!item._id) {
                 return (
                   <div key={idx} className="flex flex-col my-2 space-y-2">
                     <h4 className="text-base">{item.title}</h4>
+                    <input
+                      placeholder="Project Title"
+                      onChange={projectsListHandleChange(item.id, "title")}
+                      name="title"
+                      value={item.title}
+                      className="custom-input"
+                    />{" "}
                     <input
                       placeholder="Description"
                       onChange={projectsListHandleChange(item.id, "desc")}

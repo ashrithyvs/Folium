@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Experience(props) {
   const [experienceListItem, setexperienceListItem] = useState("");
   const { state, setState } = props;
-  const [experienceList, setexperienceList] = useState(state.experience);
+  const [experienceList, setexperienceList] = useState(state.experience || []);
   const cont = (e) => {
     e.preventDefault();
     setState((prev) => ({ ...prev, experience: experienceList }));
@@ -49,12 +49,23 @@ export default function Experience(props) {
         </button>
       </div>
       <div className="flex flex-col space-y-6">
-        {experienceList.length !== 0 &&
+        {experienceList &&
+          experienceList.length !== 0 &&
           experienceList.map((item, idx) => {
             if (!item._id) {
               return (
-                <div key={idx} className="flex flex-col my-2 space-y-2">
+                <div key={idx} className="flex flex-col my-3 space-y-2">
                   <h4 className="text-base">{item.experienceField}</h4>
+                  <input
+                    placeholder="Experience Field"
+                    onChange={experienceListHandleChange(
+                      item.id,
+                      "experienceField"
+                    )}
+                    value={item.experienceField}
+                    name="experienceField"
+                    className="custom-input"
+                  />{" "}
                   <input
                     placeholder="Company/Organization"
                     onChange={experienceListHandleChange(item.id, "org")}

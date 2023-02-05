@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Skills(props) {
   const [SkillsListItem, setSkillsListItem] = useState("");
   const { state, setState } = props;
-  const [SkillsList, setSkillsList] = useState(state.skills);
+  const [SkillsList, setSkillsList] = useState(state.skills || []);
   const cont = (e) => {
     e.preventDefault();
     setState((prev) => ({ ...prev, skills: SkillsList }));
@@ -47,11 +47,12 @@ export default function Skills(props) {
         </button>
       </div>
       <div className="flex flex-col space-y-6">
-        {SkillsList.length !== 0 &&
+        {SkillsList &&
+          SkillsList.length !== 0 &&
           SkillsList.map((item, idx) => {
             if (!item._id) {
               return (
-                <div key={idx} className="flex flex-col my-2 space-y-2">
+                <div key={idx} className="flex flex-col my-3 space-y-2">
                   <h4 className="text-base">{item.SkillField}</h4>
                   <input
                     placeholder="Skill"

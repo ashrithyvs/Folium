@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Education(props) {
   const [educationListItem, seteducationListItem] = useState("");
   const { state, setState } = props;
-  const [educationList, seteducationList] = useState(state.education);
+  const [educationList, seteducationList] = useState(state.education || []);
   const cont = (e) => {
     e.preventDefault();
     setState((prev) => ({ ...prev, education: educationList }));
@@ -52,12 +52,24 @@ export default function Education(props) {
         </button>
       </div>
       <div className="flex flex-col space-y-6">
-        {educationList.length !== 0 &&
+        {educationList &&
+          educationList.length !== 0 &&
           educationList.map((item, idx) => {
             if (!item._id) {
               return (
-                <div key={idx} className="flex flex-col my-2 space-y-2">
+                <div key={idx} className="flex flex-col my-3 space-y-2">
                   <h4 className="text-base">{item.educationField}</h4>
+
+                  <input
+                    placeholder="Education Field"
+                    onChange={educationListHandleChange(
+                      item.id,
+                      "educationField"
+                    )}
+                    value={item.educationField}
+                    name="educationField"
+                    className="custom-input"
+                  />
                   <input
                     placeholder="Instituition/University"
                     name="instituition"
