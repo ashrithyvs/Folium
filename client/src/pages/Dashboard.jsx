@@ -41,6 +41,9 @@ export default function Dashboard() {
           </button>
           <Link className="custom-btn-outline bg-[#111827]" to="/templates">
             Templates
+          </Link>{" "}
+          <Link className="custom-btn-outline bg-[#111827]" to="/scholar">
+            Google Scholars
           </Link>
         </div>
         {/* <div className="MyCard50 img11">

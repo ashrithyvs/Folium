@@ -12,6 +12,7 @@ import { Temp1 } from "./pages/Temp1";
 import TempTwo from "./pages/Temp2";
 import Navbar from "./components/Navbar";
 import { Temp3 } from "./pages/Temp3";
+import GoogleScholar from "./pages/GoogleScholar";
 
 function App() {
   const userInfo = window.localStorage.user;
@@ -31,6 +32,7 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/templates" component={Templates} />
+          <Route path="/scholar" component={GoogleScholar} />
           <Route path="/customtemplate" component={CustomTemplate} />
           <Route path="/custompage" component={CustomPage} />
           <Route path="/template-one" component={Temp1} />

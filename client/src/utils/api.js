@@ -80,6 +80,49 @@ export const mainProfile = (user) => {
       console.log(err);
     });
 };
+export const getAuthors = (queriedAuthor) => {
+  console.log(queriedAuthor);
+  return instance
+    .post(
+      "api/scholar/get-authors-list",
+      { queriedAuthor: queriedAuthor },
+      {
+        headers: {
+          "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
+            /['"]+/g,
+            ""
+          ),
+        },
+      }
+    )
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const getAuthor = (id) => {
+  return instance
+    .post(
+      "api/scholar/get-author",
+      { authorId: id },
+      {
+        headers: {
+          "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
+            /['"]+/g,
+            ""
+          ),
+        },
+      }
+    )
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 export function getCurrentUser() {
   return JSON.parse(localStorage.getItem("user"));
