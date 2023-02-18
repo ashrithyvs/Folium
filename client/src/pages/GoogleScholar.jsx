@@ -63,16 +63,69 @@ function GoogleScholar() {
       </div>
 
       {currentAuthor && (
-        <div>
+        <main>
           <div className="flex justify-start items-center">
             <IoChevronBackSharp
               size={40}
               className="cursor-pointer rounded-full p-2 border-white border-2"
               onClick={() => setCurrentAuthor()}
             />
-            <h4 className="mx-auto text-center my-4 font-bold">
+            {/* <h4 className="mx-auto text-center my-4 font-bold">
               {currentAuthor.author.name}'s Articles
-            </h4>
+            </h4> */}
+          </div>
+          <div className="flex space-x-6 p-4">
+            <img
+              alt=""
+              className="w-1/4 rounded-3xl min-h-full"
+              src={currentAuthor.author.thumbnail || "holder.js/100px180"}
+            />
+            <div className=" flex flex-col space-y-2 py-3 justify-center items-start">
+              <h4 className=" text-xl font-bold">
+                Hey! I'm {currentAuthor.author.name}
+              </h4>{" "}
+              <div>
+                <h4 className=" text-xl font-bold">
+                  Affiliation:{" "}
+                  <span className="font-normal">
+                    {currentAuthor.author.affiliations}
+                  </span>
+                </h4>{" "}
+                <h4 className=" text-xl font-bold">
+                  Interests:{" "}
+                  {currentAuthor.author.interests.map((interest, i) => {
+                    return (
+                      <span className="font-normal">
+                        {interest.title}
+                        {i === currentAuthor.author.interests.length - 1
+                          ? null
+                          : ","}{" "}
+                      </span>
+                    );
+                  })}
+                </h4>
+                <h4 className=" text-xl font-bold">
+                  Website:{" "}
+                  <a
+                    href={currentAuthor.author.website}
+                    target="_blank"
+                    className="font-normal text-white"
+                    rel="noreferrer"
+                  >
+                    {currentAuthor.author.website}
+                  </a>
+                </h4>{" "}
+                <h4 className=" text-xl font-bold">
+                  Mail:{" "}
+                  <a
+                    href={`mailto:${currentAuthor.author.email}`}
+                    className="font-normal text-white"
+                  >
+                    {currentAuthor.author.email}
+                  </a>
+                </h4>
+              </div>
+            </div>
           </div>
           {currentAuthor.articles.map((article, idx) => {
             return (
@@ -96,7 +149,7 @@ function GoogleScholar() {
               </div>
             );
           })}
-        </div>
+        </main>
       )}
     </div>
   );
