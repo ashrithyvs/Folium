@@ -35,13 +35,11 @@ export const login = (user) => {
     })
     .catch((err) => {
       console.log(err);
-      // Handling the error and reload page
       alert("Please enter valid information");
-      window.location.href = "/dashboard";
+      window.location.href = "/";
     });
 };
 
-//Routing for geeting name from user profile only to home page
 export const home = (user) => {
   return instance
     .get("api/auth", {
@@ -73,7 +71,7 @@ export const mainProfile = (user) => {
       },
     })
     .then((response) => {
-      // console.log(response);
+      console.log(response);
       return response.data;
     })
     .catch((err) => {

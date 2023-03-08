@@ -4,20 +4,9 @@ const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
-//importing module
 const User = require("../../models/Users");
 const { check, validationResult } = require("express-validator");
-//i wrote for testing purpose for post man
-// // @route    get api/users
-// // @desc     Register user
-// // @access   Public
 
-// router.get("/",(req,res)=> res.send("user route"));
-// module.exports = router;
-
-// @route    post api/users
-// @desc     Register user
-// @access   Public
 
 router.post(
   "/",

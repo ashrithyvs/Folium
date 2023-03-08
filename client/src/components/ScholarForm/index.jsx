@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import NavBarDetails from "./NavBarDetails";
-import ScholarAboutMeDetails from "./AboutMeDetails";
-import ProjectDetails from "./ProjectDetails";
-import Confirm from "./Confirm";
-import Success from "./Success";
+import NavBarDetails from "./ScholarNavBarDetails";
+import AboutMeDetails from "./ScholarAboutMeDetails";
+import ProjectDetails from "./ScholarProjectDetails";
+import Research from "./ScholarResearch";
+import Confirm from "./ScholarConfirm";
+import Success from "./ScholarSuccess";
+import Awards from "./ScholarAwards";
 import { mainProfile } from "../../utils/api.js";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
-import Steps from "./Steps";
-import Education from "./Education";
-import Experience from "./Experience";
-import Skills from "./Skills";
-export default function UserForm(props) {
+import Steps from "./ScholarSteps";
+import Education from "./ScholarEducation";
+import Experience from "./ScholarExperience";
+import Subjects from "./ScholarSubjects";
+import PatentDetails from "./ScholarPatents";
+export default function ScholarForm(props) {
   const [currentStep, setCurrentStep] = useState(0);
   const history = useHistory();
   const [templateData, setTemplateData] = useState();
@@ -33,17 +36,21 @@ export default function UserForm(props) {
     projects: [],
     education: [],
     experience: [],
-    skills: [],
+    patents: [],
+    awards: [],
+    subjects: [],
+    researches: [],
   });
   useEffect(() => {
     mainProfile()
       .then((res) => {
-        setTemplateData(res);
-        setState({
-          ...res,
-          navColor: "#2A2C2E",
-          aboutBgColor: "#2A2C2E",
-        });
+        console.log(res);
+        // setTemplateData(res);
+        // setState({
+        //   ...res,
+        //   navColor: "#2A2C2E",
+        //   aboutBgColor: "#2A2C2E",
+        // });
       })
       .catch((err) => console.log(err));
   }, []);
@@ -70,8 +77,8 @@ export default function UserForm(props) {
     }));
   };
 
-  const skillsHandleChange = (input) => (e) => {
-    setState((prev) => ({ ...prev, skills: input }));
+  const subjectsHandleChange = (input) => (e) => {
+    setState((prev) => ({ ...prev, subjects: input }));
   };
 
   const modalContent = [
@@ -86,6 +93,7 @@ export default function UserForm(props) {
       component: (
         <NavBarDetails
           nextStep={nextStep}
+          prevStep={prevStep}
           handleChange={handleChange}
           state={state}
         />
@@ -94,7 +102,7 @@ export default function UserForm(props) {
     {
       title: "About Settings",
       component: (
-        <ScholarAboutMeDetails
+        <AboutMeDetails
           nextStep={nextStep}
           prevStep={prevStep}
           handleChange={handleChange}
@@ -114,13 +122,24 @@ export default function UserForm(props) {
       ),
     },
     {
-      title: "Skills Settings",
+      title: "Research",
       component: (
-        <Skills
+        <Research
           nextStep={nextStep}
           prevStep={prevStep}
           setState={setState}
-          skillsHandleChange={skillsHandleChange}
+          state={state}
+        />
+      ),
+    },
+    {
+      title: "Subjects Settings",
+      component: (
+        <Subjects
+          nextStep={nextStep}
+          prevStep={prevStep}
+          setState={setState}
+          subjectsHandleChange={subjectsHandleChange}
           state={state}
         />
       ),
@@ -149,6 +168,32 @@ export default function UserForm(props) {
         />
       ),
     },
+    {
+      title: "Patents",
+      component: (
+        <PatentDetails
+          nextStep={nextStep}
+          prevStep={prevStep}
+          setState={setState}
+          handleChange={handleChange}
+          projectsHandleChange={projectsHandleChange}
+          state={state}
+        />
+      ),
+    },
+    {
+      title: "Awards",
+      component: (
+        <Awards
+          nextStep={nextStep}
+          prevStep={prevStep}
+          setState={setState}
+          handleChange={handleChange}
+          projectsHandleChange={projectsHandleChange}
+          state={state}
+        />
+      ),
+    },
 
     {
       title: "Are you sure?",
@@ -164,7 +209,7 @@ export default function UserForm(props) {
   return (
     <div
       className="hidden w-full bg-black/40 fixed z-50 flex justify-center items-center md:inset-0 h-modal sm:h-full"
-      id="portfolioDetailsModal"
+      id="scholarDetailsModal"
     >
       <div className="relative px-4 w-full bg-[#111827] max-w-3xl  rounded-xl h-full md:h-auto">
         <div className="relative bg-[#111827] shadow py-4  text-white">
@@ -183,7 +228,7 @@ export default function UserForm(props) {
                   aboutBgColor: "#2A2C2E",
                 });
                 document
-                  .getElementById("portfolioDetailsModal")
+                  .getElementById("scholarDetailsModal")
                   .classList.toggle("hidden");
               }}
             >
