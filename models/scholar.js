@@ -17,13 +17,13 @@ const userSchema = new mongoose.Schema({
   githubLink: { type: String },
   linkdin: { type: String },
   footer: { type: String },
+  projects: { type: Array },
   education: { type: Array },
   experience: { type: Array },
-  awards: { type: Array },
-  researches: { type: Array },
   patents: { type: Array },
+  awards: { type: Array },
   subjects: { type: Array },
-  projects: { type: Array },
+  researches: { type: Array },
   date: { type: Date, default: Date.now },
 });
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 export const ProjectDetails = (props) => {
   const [projectsListItem, setprojectsListItem] = useState("");
@@ -16,7 +17,7 @@ export const ProjectDetails = (props) => {
   };
 
   const handleProjectsCount = () => {
-    console.log(projectsList);
+    console.log(projectsList, state);
     setprojectsList((prev) => [
       ...prev,
       {
@@ -38,6 +39,9 @@ export const ProjectDetails = (props) => {
     newArr[idx - 1][e.target.name] = e.target.value;
     setprojectsList(newArr);
   };
+  // const deleteProjectsListItem = (id) => (e) => {
+  //   setprojectsList((prev) => [...prev.splice(id + 1)]);
+  // };
 
   return (
     <div className="flex flex-col space-y-6">
@@ -62,7 +66,13 @@ export const ProjectDetails = (props) => {
               if (!item._id) {
                 return (
                   <div key={idx} className="flex flex-col my-2 space-y-2">
-                    <h4 className="text-base">{item.title}</h4>
+                    <div className="flex justify-between w-full">
+                      <h4 className="text-base">{item.title}</h4>
+                      {/* <AiOutlineClose
+                        onClick={deleteProjectsListItem(item._id)}
+                        fontSize={20}
+                      /> */}
+                    </div>
                     <input
                       placeholder="Project Title"
                       onChange={projectsListHandleChange(item.id, "title")}

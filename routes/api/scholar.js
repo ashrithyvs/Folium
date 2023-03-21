@@ -4,8 +4,9 @@ const config = require("config");
 const { getJson } = require("serpapi");
 
 const auth = require("../../middleware/auth");
-const Profile = require("../../models/profile.js");
+const Scholar = require("../../models/scholar.js");
 const User = require("../../models/Users.js");
+const scholar = require("../../models/scholar.js");
 
 router.post("/get-authors-list", async (req, res) => {
   try {
@@ -21,7 +22,7 @@ router.post("/get-authors-list", async (req, res) => {
     res.json(response);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send(err.message);
   }
 });
 router.post("/get-author", async (req, res) => {
@@ -42,17 +43,35 @@ router.post("/get-author", async (req, res) => {
   }
 });
 
-// @route    post api/profile
-// @desc     Register user
-// @access   Private
-
 router.post("/", auth, async (req, res) => {
   try {
-    res.json();
-    console.log("from backend profile ");
+    console.log(req.body);
+    let scholarProfile = await Scholar.findOneAndUpdate(
+      { user: req.user.id },
+      { $set: { ...req.body } },
+      { new: true, upsert: true }
+    );
+    res.json(scholarProfile);
+    console.log("from backend scholarProfile ", scholarProfile);
   } catch (err) {
     console.error(err);
-    res.status(500).send("Server error");
+    res.status(500).send("Something went wrong in /scholar/ route");
+  }
+});
+router.get("/me", auth, async (req, res) => {
+  try {
+    const scholarProfile = await Scholar.findOne({
+      user: req.user.id,
+    }).populate("user", ["firstName", "lastName", "avatar", "email"]);
+    if (!scholarProfile) {
+      return res
+        .status(400)
+        .json({ msg: "There is no scholarProfile for this user" });
+    }
+    res.json(scholarProfile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Something went wrong in /scholar/me route");
   }
 });
 module.exports = router;

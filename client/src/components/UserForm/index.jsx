@@ -38,12 +38,21 @@ export default function UserForm(props) {
   useEffect(() => {
     mainProfile()
       .then((res) => {
-        setTemplateData(res);
-        setState({
-          ...res,
-          navColor: "#2A2C2E",
-          aboutBgColor: "#2A2C2E",
-        });
+        res
+          ? setTemplateData({
+              ...res,
+            })
+          : setTemplateData({
+              ...state,
+            });
+        res
+          ? setState({
+              ...res,
+            })
+          : setState({
+              ...state,
+            });
+        console.log(res, state);
       })
       .catch((err) => console.log(err));
   }, []);

@@ -7,7 +7,6 @@ const config = require("config");
 const User = require("../../models/Users");
 const { check, validationResult } = require("express-validator");
 
-
 router.post(
   "/",
   [
@@ -25,10 +24,8 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    //object destructing
     const { firstName, lastName, email, avatar, password } = req.body;
     try {
-      //see if user exists
       let user = await User.findOne({ email });
 
       if (user) {
@@ -36,13 +33,11 @@ router.post(
           .status(400)
           .json({ errors: [{ msg: "User already exists" }] });
       }
-      //get users garvatar
       const avatar = gravatar.url(email, {
         s: "200",
         r: "pg",
         d: "mm",
       });
-      //and create instance of new user
       user = new User({
         firstName,
         lastName,
@@ -51,22 +46,13 @@ router.post(
         password,
       });
 
-      //**** */ encrypt password
-      //(salting the bcrypt more the value more secure)
       const salt = await bcrypt.genSalt(10);
-      //hasing the password
       user.password = await bcrypt.hash(password, salt);
-      //and save the user
       await user.save();
-
-      // return jsonwebtoken
-      const payload = {
-        user: {
+      jwt.sign(
+        {
           id: user.id,
         },
-      };
-      jwt.sign(
-        payload,
         process.env.JWT_SECRET,
         { expiresIn: "5 days" },
         (err, token) => {

@@ -6,7 +6,7 @@ import Research from "./ScholarResearch";
 import Confirm from "./ScholarConfirm";
 import Success from "./ScholarSuccess";
 import Awards from "./ScholarAwards";
-import { mainProfile } from "../../utils/api.js";
+import { scholarProfile } from "../../utils/api.js";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import Steps from "./ScholarSteps";
@@ -19,9 +19,9 @@ export default function ScholarForm(props) {
   const history = useHistory();
   const [templateData, setTemplateData] = useState();
   const [state, setState] = useState({
-    navColor: "#2A2C2E",
     firstName: "",
     lastName: "",
+    navColor: "#2A2C2E",
     navText: "",
     navImage: "",
     introText: "",
@@ -42,15 +42,22 @@ export default function ScholarForm(props) {
     researches: [],
   });
   useEffect(() => {
-    mainProfile()
+    scholarProfile()
       .then((res) => {
-        console.log(res);
-        // setTemplateData(res);
-        // setState({
-        //   ...res,
-        //   navColor: "#2A2C2E",
-        //   aboutBgColor: "#2A2C2E",
-        // });
+        res
+          ? setTemplateData({
+              ...res,
+            })
+          : setTemplateData({
+              ...state,
+            });
+        res
+          ? setState({
+              ...res,
+            })
+          : setState({
+              ...state,
+            });
       })
       .catch((err) => console.log(err));
   }, []);

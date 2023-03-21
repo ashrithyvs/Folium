@@ -1,48 +1,12 @@
-import { profile } from "../../utils/api.js";
+import { scholar } from "../../utils/api.js";
 
 export const Confirm = (props) => {
-  const {
-    state: {
-      navColor,
-      navText,
-      navImage,
-      introText,
-      introTitle,
-      bio,
-      aboutBgColor,
-      profileImage,
-      resumeUrl,
-      githubLink,
-      linkdin,
-      footer,
-      experience,
-      education,
-      skills,
-      projects,
-    },
-  } = props;
   const cont = (e) => {
     e.preventDefault();
-    const newUser = {
-      navColor: navColor,
-      navText: navText,
-      navImage: navImage,
-      introText: introText,
-      introTitle: introTitle,
-      bio: bio,
-      aboutBgColor: aboutBgColor,
-      profileImage: profileImage,
-      resumeUrl: resumeUrl,
-      githubLink: githubLink,
-      linkdin: linkdin,
-      footer: footer,
-      education: education,
-      experience: experience,
-      skills: skills,
-      projects: projects,
-    };
-    console.log("from confirm page front end", newUser);
-    profile(newUser)
+    delete props.state["firstName"];
+    delete props.state["lastName"];
+    console.log("from confirm page front end", props.state);
+    scholar(props.state)
       .then(function (res) {
         console.log(res);
       })

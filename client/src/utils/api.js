@@ -4,7 +4,6 @@ const instance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   withCredentials: false,
 });
-// Front end route for signup
 export const register = (newUser) => {
   return instance
     .post("api/users", {
@@ -78,6 +77,24 @@ export const mainProfile = (user) => {
       console.log(err);
     });
 };
+export const scholarProfile = (user) => {
+  return instance
+    .get("api/scholar/me", {
+      headers: {
+        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
+          /['"]+/g,
+          ""
+        ),
+      },
+    })
+    .then((response) => {
+      console.log(response);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 export const getAuthors = (queriedAuthor) => {
   console.log(queriedAuthor);
   return instance
@@ -131,51 +148,17 @@ export function logout() {
   window.location.reload();
 }
 
-// Post route for profile from wizard
 export const profile = (newUser) => {
   console.log("from api", newUser);
   return instance
-    .post(
-      "api/profile",
-      {
-        navColor: newUser.navColor,
-        navText: newUser.navText,
-        navImage: newUser.navImage,
-        introText: newUser.introText,
-        introTitle: newUser.introTitle,
-        bio: newUser.bio,
-        aboutBgColor: newUser.aboutBgColor,
-        profileImage: newUser.profileImage,
-        projectOneTitle: newUser.projectOneTitle,
-        projectOneText: newUser.projectOneText,
-        projectOneUrl: newUser.projectOneUrl,
-        projectOneImage: newUser.projectOneImageeducation,
-        projectTwoTitle: newUser.projectTwoTitle,
-        projectTwoText: newUser.projectTwoText,
-        projectTwoUrl: newUser.projectTwoUrl,
-        projectTwoImage: newUser.projectTwoImage,
-        projectThreeTitle: newUser.projectThreeTitle,
-        projectThreeText: newUser.projectThreeText,
-        projectThreeUrl: newUser.projectThreeUrl,
-        projectThreeImage: newUser.projectThreeImage,
-        resumeUrl: newUser.resumeUrl,
-        githubLink: newUser.githubLink,
-        linkdin: newUser.linkdin,
-        footer: newUser.footer,
-        education: newUser.education,
-        experience: newUser.experience,
-        skills: newUser.skills,
-        projects: newUser.projects,
+    .post("api/profile", newUser, {
+      headers: {
+        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
+          /['"]+/g,
+          ""
+        ),
       },
-      {
-        headers: {
-          "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
-            /['"]+/g,
-            ""
-          ),
-        },
-      }
-    )
+    })
     .then((response) => {
       console.log("profile sent to backend");
       return response.data;
@@ -184,7 +167,25 @@ export const profile = (newUser) => {
       console.log(err);
     });
 };
-
+export const scholar = (newUser) => {
+  console.log("from api", newUser);
+  return instance
+    .post("api/scholar", newUser, {
+      headers: {
+        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
+          /['"]+/g,
+          ""
+        ),
+      },
+    })
+    .then((response) => {
+      console.log("profile sent to backend");
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 export const generatepage = (data) => {
   return instance
     .post("api/generatepage", {

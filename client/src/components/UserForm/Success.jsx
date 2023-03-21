@@ -12,7 +12,6 @@ export const Success = (props) => {
   return (
     <div className="text-center pt-6">
       <h1>Thank You For Your Submission</h1>
-      <p>You will get an email with further instructions.</p>
     </div>
   );
 };

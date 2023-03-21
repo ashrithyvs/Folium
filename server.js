@@ -3,7 +3,26 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const cors = require("cors");
 const app = express();
+// import { AbortSignal } from "node-abort-controller";
 
+// fix for Reference error AbortSignal in `lru-cache`
+// global.AbortSignal = AbortSignal;
+// var originsWhitelist = [
+//   "http://localhost:3000/",
+//   "http://localhost:3001/",
+//   "http://localhost:3002/",
+//   "https://h-ash.vercel.app/",
+//   "https://folium-380907.el.r.appspot.com/",
+// ];
+// var corsOptions = {
+//   origin: function (origin, callback) {
+//     var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+//     callback(null, isWhitelisted);
+//   },
+//   credentials: true,
+// };
+
+// app.use(cors(corsOptions));
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
