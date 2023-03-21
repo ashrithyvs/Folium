@@ -3,6 +3,12 @@ import axios from "axios";
 const instance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   withCredentials: false,
+  headers: {
+    "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
+      /['"]+/g,
+      ""
+    ),
+  },
 });
 export const register = (newUser) => {
   return instance
@@ -12,25 +18,24 @@ export const register = (newUser) => {
       email: newUser.email,
       password: newUser.password,
     })
-    .then((response) => {
+    .then(() => {
       console.log("Registered");
     });
 };
 
-// Route for login
 export const login = (user) => {
   return instance
     .post("api/auth", {
       email: user.email,
       password: user.password,
     })
-    .then((response) => {
-      console.log("from the api.js", response);
-      if (response.data.token) {
-        localStorage.setItem("user", response.data.token);
+    .then((res) => {
+      console.log("from the api.js", res);
+      if (res.data.token) {
+        localStorage.setItem("user", res.data.token);
       }
-      console.log(response.data.token);
-      return response.data;
+      console.log(res.data.token);
+      return res.data;
     })
     .catch((err) => {
       console.log(err);
@@ -41,37 +46,21 @@ export const login = (user) => {
 
 export const home = (user) => {
   return instance
-    .get("api/auth", {
-      headers: {
-        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
-          /['"]+/g,
-          ""
-        ),
-      },
-    })
-    .then((response) => {
-      // console.log(response);
-      return response.data;
+    .get("api/auth")
+    .then((res) => {
+      return res.data;
     })
     .catch((err) => {
       console.log(err);
     });
 };
 
-// Route for getting main profile
 export const mainProfile = (user) => {
   return instance
-    .get("api/profile/me", {
-      headers: {
-        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
-          /['"]+/g,
-          ""
-        ),
-      },
-    })
-    .then((response) => {
-      console.log(response);
-      return response.data;
+    .get("api/profile/me")
+    .then((res) => {
+      console.log(res);
+      return res.data;
     })
     .catch((err) => {
       console.log(err);
@@ -79,17 +68,10 @@ export const mainProfile = (user) => {
 };
 export const scholarProfile = (user) => {
   return instance
-    .get("api/scholar/me", {
-      headers: {
-        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
-          /['"]+/g,
-          ""
-        ),
-      },
-    })
-    .then((response) => {
-      console.log(response);
-      return response.data;
+    .get("api/scholar/me")
+    .then((res) => {
+      console.log(res);
+      return res.data;
     })
     .catch((err) => {
       console.log(err);
@@ -98,20 +80,9 @@ export const scholarProfile = (user) => {
 export const getAuthors = (queriedAuthor) => {
   console.log(queriedAuthor);
   return instance
-    .post(
-      "api/scholar/get-authors-list",
-      { queriedAuthor: queriedAuthor },
-      {
-        headers: {
-          "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
-            /['"]+/g,
-            ""
-          ),
-        },
-      }
-    )
-    .then((response) => {
-      return response.data;
+    .post("api/scholar/get-authors-list", { queriedAuthor: queriedAuthor })
+    .then((res) => {
+      return res.data;
     })
     .catch((err) => {
       console.log(err);
@@ -119,20 +90,9 @@ export const getAuthors = (queriedAuthor) => {
 };
 export const getAuthor = (id) => {
   return instance
-    .post(
-      "api/scholar/get-author",
-      { authorId: id },
-      {
-        headers: {
-          "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
-            /['"]+/g,
-            ""
-          ),
-        },
-      }
-    )
-    .then((response) => {
-      return response.data;
+    .post("api/scholar/get-author", { authorId: id })
+    .then((res) => {
+      return res.data;
     })
     .catch((err) => {
       console.log(err);
@@ -151,17 +111,10 @@ export function logout() {
 export const profile = (newUser) => {
   console.log("from api", newUser);
   return instance
-    .post("api/profile", newUser, {
-      headers: {
-        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
-          /['"]+/g,
-          ""
-        ),
-      },
-    })
-    .then((response) => {
+    .post("api/profile", newUser, {})
+    .then((res) => {
       console.log("profile sent to backend");
-      return response.data;
+      return res.data;
     })
     .catch((err) => {
       console.log(err);
@@ -170,17 +123,10 @@ export const profile = (newUser) => {
 export const scholar = (newUser) => {
   console.log("from api", newUser);
   return instance
-    .post("api/scholar", newUser, {
-      headers: {
-        "x-auth-token": JSON.stringify(localStorage.getItem("user")).replace(
-          /['"]+/g,
-          ""
-        ),
-      },
-    })
-    .then((response) => {
+    .post("api/scholar", newUser)
+    .then((res) => {
       console.log("profile sent to backend");
-      return response.data;
+      return res.data;
     })
     .catch((err) => {
       console.log(err);
@@ -191,7 +137,7 @@ export const generatepage = (data) => {
     .post("api/generatepage", {
       page: data,
     })
-    .then((response) => {
-      console.log("This new page holds - ", response);
+    .then((res) => {
+      console.log("This new page holds - ", res);
     });
 };
