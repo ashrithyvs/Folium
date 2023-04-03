@@ -9,7 +9,7 @@ import Login from "./components/auth/Login";
 import Dashboard from "./pages/Dashboard";
 import Footer from "./components/Footer";
 import { Temp1 } from "./pages/Temp1";
-import TempTwo from "./pages/Temp2";
+import { Temp2 } from "./pages/Temp2";
 import Navbar from "./components/Navbar";
 import { Temp3 } from "./pages/Temp3";
 import GoogleScholar from "./pages/GoogleScholar";
@@ -36,7 +36,7 @@ function App() {
           <Route path="/customtemplate" component={CustomTemplate} />
           <Route path="/custompage" component={CustomPage} />
           <Route path="/template-one" component={Temp1} />
-          <Route path="/template-two" component={TempTwo} />
+          <Route path="/template-two" component={Temp2} />
           <Route path="/template-three" component={Temp3} />
         </Switch>
         <Footer />

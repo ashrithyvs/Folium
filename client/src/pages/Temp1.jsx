@@ -2,6 +2,9 @@ import TempOneNavbar from "../tOneComp/TempOneNavbar";
 import TempOneAbout from "../tOneComp/TempOneAbout";
 import TempOneProjects from "../tOneComp/TempOneProjects.jsx";
 import TempOneFooter from "../tOneComp/TempOneFooter";
+import TempOneEducation from "../tOneComp/TempOneEducation";
+import TempOneSkills from "../tOneComp/TempOneSkills";
+import TempOneExperience from "../tOneComp/TempOneExperience";
 import { mainProfile } from "../utils/api.js";
 import { useEffect, useState } from "react";
 import ConvertToHtml from "../utils/ConvertToHtml";
@@ -11,6 +14,9 @@ export const TempOneWrapper = ({ templateData }) => {
     <div className="bg-[#111827] text-white">
       <TempOneNavbar templateData={templateData} />
       <TempOneAbout templateData={templateData} />
+      <TempOneEducation templateData={templateData} />
+      <TempOneExperience templateData={templateData} />
+      <TempOneSkills templateData={templateData} />
       <TempOneProjects templateData={templateData} />
       <TempOneFooter templateData={templateData} />
     </div>
