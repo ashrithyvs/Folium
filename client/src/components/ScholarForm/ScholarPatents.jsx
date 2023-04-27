@@ -24,6 +24,7 @@ export const PatentDetails = (props) => {
         inventors: "",
         appNum: "",
         date: "",
+        // date: new Date(),
         status: "",
       },
     ]);
@@ -84,9 +85,10 @@ export const PatentDetails = (props) => {
                     />{" "}
                     <input
                       placeholder="Date"
-                      name="date"
+                      // name="date"
+                      name="number"
                       onChange={patentsListHandleChange(item.id)}
-                      type="number"
+                      type="date"
                       value={item.date}
                       className="custom-input"
                     />

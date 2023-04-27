@@ -5,7 +5,7 @@ export default function TempOneProjects({ templateData }) {
       {projects.length !== 0 &&
         projects.map((item, idx) => {
           return (
-            <div className="bg-[#1b2232] container 2xl:w-1/2 md:px-8 xl:px-8 py-10 rounded-2xl flex flex-col items-center justify-center space-y-6">
+            <div className=" container 2xl:w-1/2 md:px-8 xl:px-8 py-10 rounded-2xl flex flex-col items-center justify-center space-y-6">
               <a
                 target="_blank"
                 className="bg-transparent text-white tracking-widest text-3xl "

@@ -1,4 +1,4 @@
-export default function TempOneProjects({ templateData }) {
+export default function ScholarTempOneProjects({ templateData }) {
   const { projects } = templateData;
   return (
     <div id="projects" className="flex space-x-6 px-24 my-24 justify-evenly">
@@ -17,16 +17,15 @@ export default function TempOneProjects({ templateData }) {
               >
                 {item.title}
               </a>
-              <img alt={item.title} src={item.imageUrl} />
-              <div className="w-1/3 flex justify-evenly font-semibold p-2 border-white border-[1px] rounded-lg">
-                <span>{item.from}</span>
-                <span>-</span>
-                <span>{item.to}</span>
+              <div className="w-1/3 flex justify-evenly p-2 border-white border-[1px] rounded-lg">
+                <span>
+                  {item.duration} months - {item.status}
+                </span>
               </div>
               <span className="text-center font-semibold tracking-wide">
-                {item.tech}
+                {item.fundingAgency} - Rs.{item.sanctionedAmount}
               </span>
-              <p className="bg-transparent text-center"> {item.desc} </p>
+              <p className="bg-transparent text-center"> {item.others} </p>
             </div>
           );
         })}

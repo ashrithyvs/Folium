@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NavBarDetails from "./NavBarDetails";
 import ScholarAboutMeDetails from "./AboutMeDetails";
 import ProjectDetails from "./ProjectDetails";
@@ -11,7 +11,10 @@ import Steps from "./Steps";
 import Education from "./Education";
 import Experience from "./Experience";
 import Skills from "./Skills";
-export default function UserForm(props) {
+import { ResearchContext } from "../../utils/ResearchContext";
+export default function UserForm() {
+  const { setIsResearcher } = useContext(ResearchContext);
+  setIsResearcher(false);
   const [currentStep, setCurrentStep] = useState(0);
   const history = useHistory();
   const [templateData, setTemplateData] = useState();
@@ -174,6 +177,7 @@ export default function UserForm(props) {
     <div
       className="hidden w-full bg-black/40 fixed z-50 flex justify-center items-center md:inset-0 h-modal sm:h-full"
       id="portfolioDetailsModal"
+      role="dialog"
     >
       <div className="relative px-4 w-full bg-[#111827] max-w-3xl  rounded-xl h-full md:h-auto">
         <div className="relative bg-[#111827] shadow py-4  text-white">

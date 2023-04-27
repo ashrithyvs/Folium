@@ -12,7 +12,7 @@ export default function TempOneProjects({ templateData }) {
         {education.length !== 0 &&
           education.map((item, idx) => {
             return (
-              <div className="bg-[#1b2232] m-3 container 2xl:w-1/2 md:px-8 xl:px-8 py-10 rounded-2xl flex flex-col items-center justify-center space-y-6">
+              <div className="border-[1px] m-3 2xl:w-[48%] md:px-8 xl:px-6 py-10 rounded-2xl flex flex-col items-center justify-center space-y-6">
                 <span className="bg-transparent text-white tracking-widest text-3xl ">
                   {item.educationField}
                 </span>

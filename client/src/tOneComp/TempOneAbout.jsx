@@ -8,7 +8,7 @@ export default function About({ templateData }) {
           backgroundImage: `url(${templateData.navImage})`,
         }}
       >
-        <div className="bg-[#111827] min-h-[20vh] w-2/3 m-auto  p-8 flex flex-col text-center justify-center rounded-xl">
+        <div className="bg-[#000] min-h-[20vh] w-2/3 m-auto  p-8 flex flex-col text-center justify-center rounded-xl">
           <span className="text-4xl font-semibold">
             {templateData.introTitle}
           </span>
@@ -18,19 +18,19 @@ export default function About({ templateData }) {
       <div id="about"></div>
       <div
         className="w-2/3 mx-auto my-36 flex items-center rounded-2xl justify-between p-6"
-        style={{ backgroundColor: templateData.aboutBgColor }}
+        // style={{ backgroundColor: templateData.aboutBgColor }}
       >
-        <img
-          alt={`${templateData.user.firstName} ${templateData.user.lastName}`}
-          className="rounded-full min-w-[10vw] max-w-[10vw] min-h-[20vh] max-h-[20vh]"
-          src={templateData.profileImage}
-        />{" "}
         <div className="flex flex-col w-4/5 bg-transparent">
-          <h1 className="bg-transparent">
+          <h1 className="bg-transparent tracking-wider font-medium text-5xl">
             {templateData.user.firstName} {templateData.user.lastName}
           </h1>
           <h6 className="bg-transparent">{templateData.bio}</h6>
         </div>
+        <img
+          alt={`${templateData.user.firstName} ${templateData.user.lastName}`}
+          className="min-w-[10vw] max-w-[10vw] min-h-[20vh] max-h-[20vh]"
+          src={templateData.profileImage}
+        />{" "}
       </div>
     </div>
   );

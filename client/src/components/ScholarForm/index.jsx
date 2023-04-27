@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NavBarDetails from "./ScholarNavBarDetails";
 import AboutMeDetails from "./ScholarAboutMeDetails";
 import ProjectDetails from "./ScholarProjectDetails";
@@ -14,7 +14,10 @@ import Education from "./ScholarEducation";
 import Experience from "./ScholarExperience";
 import Subjects from "./ScholarSubjects";
 import PatentDetails from "./ScholarPatents";
+import { ResearchContext } from "../../utils/ResearchContext";
 export default function ScholarForm(props) {
+  const { setIsResearcher } = useContext(ResearchContext);
+  setIsResearcher(true);
   const [currentStep, setCurrentStep] = useState(0);
   const history = useHistory();
   const [templateData, setTemplateData] = useState();

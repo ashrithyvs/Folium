@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Navbar({ templateData }) {
+export default function ScholarTempOneNavbar({ templateData }) {
   return (
     <div
       // style={{ backgroundColor: templateData.navColor }}
-      className="flex justify-between items-center px-[10vw] py-4 mx-auto sticky top-0 text-white"
+      className="flex justify-between bg-black items-center px-[10vw] py-4 mx-auto sticky top-0 text-white"
     >
       {/* <a
         href="#intro"
@@ -22,11 +22,20 @@ export default function Navbar({ templateData }) {
         <a className="text-white" href="#experience">
           EXPERIENCE
         </a>
-        <a className="text-white" href="#skills">
-          SKILLS
+        <a className="text-white" href="#patents">
+          PATENTS
+        </a>
+        <a className="text-white" href="#researches">
+          RESEARCHES
+        </a>
+        <a className="text-white" href="#subjects">
+          SUBJECTS
         </a>
         <a className="text-white" href="#projects">
           PROJECTS
+        </a>
+        <a className="text-white" href="#awards">
+          AWARDS
         </a>
       </div>
     </div>
